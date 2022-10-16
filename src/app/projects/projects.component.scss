@@ -72,15 +72,28 @@ ng-image-slider {
   gap: 0.5rem;
 }
 
+.tech-stack-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tech-stack-image {
+  height: 2rem;
+}
+
+.tag-container {
+  align-self: center;
+  padding: 0.5rem;
+}
+
 .tag {
-  align-self: flex-start;
-  padding: 0.25em 0.75em;
-  border-radius: 1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
   font-size: 0.75rem;
 }
 
-.tag + .tag {
-  margin-left: 0.5em;
+#humanPowered {
+  font-size: 2.5rem;
 }
 
 .tag-blue {
@@ -89,17 +102,17 @@ ng-image-slider {
   color: #fafafa;
 }
 
-.tag-brown {
-  background: #d1913c;
-  background: linear-gradient(to bottom, #ffd194, #d1913c);
-  color: #fafafa;
-}
+// .tag-brown {
+//   background: #d1913c;
+//   background: linear-gradient(to bottom, #ffd194, #d1913c);
+//   color: #fafafa;
+// }
 
-.tag-red {
-  background: #cb2d3e;
-  background: linear-gradient(to bottom, #ef473a, #cb2d3e);
-  color: #fafafa;
-}
+// .tag-red {
+//   background: #cb2d3e;
+//   background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+//   color: #fafafa;
+// }
 
 .parchment {
   box-shadow: 2px 3px 10px black, 0 0 60px #8a4d0f inset;

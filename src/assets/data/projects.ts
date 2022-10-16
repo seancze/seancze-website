@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
     projectUrl: 'https://app.sagexperiences.com',
     videoUrl: 'https://youtu.be/qAY6aWKJnRE',
     githubUrl: '',
-    techStack: ['ReactJS', 'TailwindCSS', 'MongoDB', 'NodeJS', 'Express'],
+    techStack: ['ReactJS', 'TailwindCSS', 'MongoDB', 'NodeJS'],
     images: [
       {
         image: '../../assets/images/portfolio/sage/1-intro.png',
@@ -236,7 +236,7 @@ export const PROJECTS: Project[] = [
     projectUrl: '',
     videoUrl: 'https://haveyoueaten.wixsite.com/dealbuddies',
     githubUrl: '',
-    techStack: ['Swift', 'Cocoapods', 'Realm'],
+    techStack: ['Swift', 'Realm'],
     images: [
       {
         image: '../../assets/images/portfolio/dealbuddies/1-core-features.png',

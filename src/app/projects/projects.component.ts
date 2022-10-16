@@ -10,6 +10,7 @@ import { faYoutube, faGithub } from '@fortawesome/free-brands-svg-icons';
 })
 export class ProjectsComponent implements OnInit {
   projects: Project[] = [];
+  techStackImages: { [key: string]: string } = {};
   faYoutube = faYoutube;
   faGithub = faGithub;
   hoveredItems: string[] = [];
@@ -18,6 +19,7 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projects = this.dbService.getProjects();
+    this.techStackImages = this.dbService.getTechStackImages();
   }
   addToHoveredItems(name: string) {
     this.hoveredItems.push(name);

@@ -22,8 +22,31 @@
       </div>
 
       <div class="card-body">
-        <div *ngFor="let tech of project.techStack">
-          <span class="tag tag-blue">{{ tech }}</span>
+        <div class="tech-stack-container">
+          <span *ngFor="let tech of project.techStack" class="tag-container">
+            <img
+              *ngIf="techStackImages[tech]"
+              src="{{ techStackImages[tech] }}"
+              alt="{{ tech }}"
+              class="tech-stack-image"
+              title="{{ tech }}"
+            />
+            <span
+              *ngIf="!techStackImages[tech] && tech !== 'humanPowered'"
+              class="tag tag-blue"
+              title="{{ tech }}"
+            >
+              {{ tech }}
+            </span>
+            <span
+              *ngIf="tech === 'humanPowered'"
+              class="tag"
+              id="humanPowered"
+              title="{{ tech }}"
+            >
+              🤝
+            </span>
+          </span>
         </div>
         <h4>{{ project.name }}</h4>
         <p>{{ project.description }}</p>
