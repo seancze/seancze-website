@@ -1,0 +1,70 @@
+@import "../../styles.scss";
+
+.about-container {
+  height: 95vh;
+  display: flex;
+  margin-bottom: 2rem;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+.about-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.about-column.left {
+  flex-basis: 40%;
+}
+
+.about-column.right {
+  flex-basis: 60%;
+}
+
+.about-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.wrapper {
+  display: inline-grid;
+  width: 50%;
+  @media (min-width: 640px) {
+    width: 30%;
+  }
+  @media (min-width: 1024px) {
+    width: 40%;
+  }
+  margin: auto;
+}
+
+.profile-pic {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.sage {
+  color: #749eff;
+}
+
+#typewriter {
+  font-size: large;
+}
+
+#github {
+  color: $github-grey;
+}
+
+#linkedin {
+  color: $linkedin-blue;
+}

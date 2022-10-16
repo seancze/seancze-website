@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+$paradise-pink: #ef476fff;
+$orange-yellow-crayola: #ffd166ff;
+$caribbean-green: #06d6a0ff;
+$midnight-green-eagle-green: #073b4cff;
+$vivid-sky-blue: #5bc3ebff;
+$github-grey: #333333;
+$youtube-red: #ff0000;
+$linkedin-blue: #0072b1;
+
+@font-face {
+  font-family: magic-school;
+  src: url("./assets/font/MagicSchoolOne.ttf") format("truetype");
+}
+@font-face {
+  font-family: halloween;
+  src: url("./assets/font/Halloween-Bold-Grunge.otf") format("opentype");
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url("./assets/font/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url("./assets/font/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 700;
+}
+
+// Set all scrolling to smooth
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "montserrat", sans-serif;
+  background-color: #fffaf4;
+  margin: 0;
+  // must be at most 32x32
+  cursor: url("./assets/images/cursor_wand_two_small.png"), auto;
+}
+
+.rounded {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}

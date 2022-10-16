@@ -1,0 +1,58 @@
+<div class="projects-container">
+  <h1>Projects</h1>
+  <div class="projects-card-container">
+    <div
+      class="projects-card parchment"
+      *ngFor="let project of projects"
+      id="project.name"
+      [ngClass]="{ 'has-hovered': hoveredItems.includes(project.name) }"
+      (mouseout)="addToHoveredItems(project.name)"
+    >
+      <div>
+        <ng-image-slider
+          #nav
+          [images]="project.images"
+          [infinite]="true"
+          [autoSlide]="false"
+          [imageSize]="{ width: '100%' }"
+          [showArrow]="project.images.length > 1"
+          [imagePopup]="false"
+          slideImage="1"
+        ></ng-image-slider>
+      </div>
+
+      <div class="card-body">
+        <div *ngFor="let tech of project.techStack">
+          <span class="tag tag-blue">{{ tech }}</span>
+        </div>
+        <h4>{{ project.name }}</h4>
+        <p>{{ project.description }}</p>
+      </div>
+      <div class="card-footer">
+        <ul class="wrapper">
+          <li class="icon github" *ngIf="project.githubUrl">
+            <span class="tooltip">Github</span>
+            <fa-icon [icon]="faGithub"></fa-icon>
+          </li>
+          <li class="icon youtube" *ngIf="project.videoUrl">
+            <span class="tooltip">Youtube</span>
+            <fa-icon [icon]="faYoutube"></fa-icon>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <svg>
+  <filter id="wavy2">
+    <feTurbulence
+      x="0"
+      y="0"
+      baseFrequency="0.02"
+      numOctaves="5"
+      seed="1"
+    ></feTurbulence>
+
+    <feDisplacementMap in="SourceGraphic" scale="10" />
+  </filter>
+</svg> -->
