@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { SkillsComponent } from './skills/skills.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     HeroComponent,
     AboutComponent,
     ProjectsComponent,
+    SkillsComponent,
   ],
   imports: [BrowserModule, FontAwesomeModule, NgImageSliderModule],
   providers: [],

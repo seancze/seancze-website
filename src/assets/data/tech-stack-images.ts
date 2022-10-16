@@ -11,8 +11,6 @@ export const TECH_STACK_IMAGES: { [key: string]: string } = {
   Java: '../../assets/images/tech-stack/java.png',
   Firebase: '../../assets/images/tech-stack/firebase.svg',
   Javascript: '../../assets/images/tech-stack/javascript.svg',
-  'Firebase Cloud Functions':
-    '../../assets/images/tech-stack/firebase-cloud-function.png',
   'IBM Watson': '',
   NodeRED: '../../assets/images/tech-stack/node-red.svg',
   Swift: '../../assets/images/tech-stack/swift.png',

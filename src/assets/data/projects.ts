@@ -188,7 +188,7 @@ export const PROJECTS: Project[] = [
     projectUrl: 'https://t.me/SUTD_ROOT_bot',
     videoUrl: '',
     githubUrl: 'https://github.com/seancze/root-feedback-telegram-bot',
-    techStack: ['Python', 'Firebase Cloud Functions', 'MongoDB'],
+    techStack: ['Python', 'Firebase', 'MongoDB'],
     images: [
       {
         image: '../../assets/images/portfolio/feedback-bot/1-feedback-bot.png',
