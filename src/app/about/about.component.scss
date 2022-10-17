@@ -6,7 +6,6 @@ h1 {
 
 .about-container {
   display: flex;
-  margin-bottom: 10rem;
 
   @media (max-width: 1024px) {
     flex-direction: column;

@@ -1,1 +1,17 @@
 <h1>Skills</h1>
+<div class="skills-container">
+  <div
+    *ngFor="let item of techStackImages | keyvalue; let i = index"
+    class="skill"
+  >
+    <button
+      [style.background]="
+        hover === i ? 'no-repeat center/contain url(' + item.value + ')' : ''
+      "
+      (mouseover)="hover = i"
+      (mouseleave)="hover = -1"
+    >
+      <span>{{ item.key }}</span>
+    </button>
+  </div>
+</div>
