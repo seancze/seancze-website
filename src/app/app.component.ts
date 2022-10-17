@@ -1,4 +1,16 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
+import {
+  faHatWizard,
+  faFolderOpen,
+  faAddressCard,
+  faHome,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +18,28 @@ import { Component, HostListener, ElementRef } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-test-two';
+  title = 'sean-chen';
+  toggleControl = new FormControl(false);
+  faHatWizard = faHatWizard;
+  faFolderOpen = faFolderOpen;
+  faAddressCard = faAddressCard;
+  faHome = faHome;
+  mobile: boolean = false;
+
+  @HostBinding('class') className = '';
+
+  constructor() {}
+
+  ngOnInit(): void {
+    this.toggleControl.valueChanges.subscribe((darkMode) => {
+      const darkClassName = 'darkMode';
+      this.className = darkMode ? darkClassName : '';
+    });
+
+    if (window.screen.width <= 640) {
+      this.mobile = true;
+    }
+  }
 
   // ARCHIVED: generate custom cursor
   // cursorRounded: any;

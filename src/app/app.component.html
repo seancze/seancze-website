@@ -2,9 +2,24 @@
 
 <div id="about">
   <nav class="scrolled">
-    <a class="scroll" href="#home">Home</a>
-    <a class="scroll" href="#about">About</a>
-    <a class="scroll" href="#projects">Projects</a>
+    <a class="scroll" href="#home">
+      {{ !mobile ? "Home" : "" }}
+
+      <fa-icon [icon]="faHome" *ngIf="mobile" class="fa-lg"></fa-icon>
+    </a>
+    <a class="scroll" href="#about"
+      >{{ !mobile ? "About" : "" }}
+      <fa-icon [icon]="faAddressCard" *ngIf="mobile" class="fa-lg"></fa-icon>
+    </a>
+    <a class="scroll" href="#projects"
+      >{{ !mobile ? "Projects" : "" }}
+      <fa-icon [icon]="faFolderOpen" *ngIf="mobile" class="fa-lg"></fa-icon>
+    </a>
+    <div class="slider-container">
+      <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+      </mat-slide-toggle>
+      <fa-icon [icon]="faHatWizard" class="fa-lg" id="wizard-hat"></fa-icon>
+    </div>
   </nav>
   <div class="app-body">
     <app-about></app-about>
