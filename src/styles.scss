@@ -51,9 +51,10 @@ $dark-pastel-purple: #9a6dd7;
   // must be at most 32x32
   cursor: url("./assets/images/cursor_wand_two_small.png"), auto;
   background-color: #303030;
-  color: $dark-pastel-purple;
   font-family: "halloween", sans-serif;
-
+  &:not(#home, nav) {
+    color: $dark-pastel-purple;
+  }
   p {
     font-family: "montserrat", sans-serif;
     color: $parchment;
