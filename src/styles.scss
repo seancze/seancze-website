@@ -48,9 +48,10 @@ $parchment: #fcf5e5;
 $dark-pastel-purple: #9a6dd7;
 
 .magic-mode-global {
+  // must be at most 32x32
+  cursor: url("./assets/images/cursor_wand_two_small.png"), auto;
   background-color: #303030;
   color: $dark-pastel-purple;
-
   font-family: "halloween", sans-serif;
 
   p {
@@ -91,8 +92,6 @@ body {
   font-family: "montserrat", sans-serif;
   background-color: $background-primary;
   margin: 0;
-  // must be at most 32x32
-  cursor: url("./assets/images/cursor_wand_two_small.png"), auto;
 }
 
 .rounded {
