@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Typewriter from 'typewriter-effect/dist/core';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { MagicService } from '../services/magic.service';
 
 @Component({
   selector: 'app-about',
@@ -12,8 +13,9 @@ export class AboutComponent implements OnInit {
   public typewriterDisplay: string = '';
   faLinkedin = faLinkedin;
   faGithub = faGithub;
+  isMagicMode: boolean = false;
 
-  constructor() {}
+  constructor(private magicService: MagicService) {}
 
   ngOnInit(): void {
     new Typewriter('#typewriter', {
@@ -25,6 +27,9 @@ export class AboutComponent implements OnInit {
       ],
       autoStart: true,
       loop: true,
+    });
+    this.magicService.magicModeChange.subscribe((value) => {
+      this.isMagicMode = value;
     });
   }
 }
