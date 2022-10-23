@@ -11,9 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$sean-chen-primary: mat.define-palette(mat.$indigo-palette);
-$sean-chen-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
+$sean-chen-primary: mat.define-palette(mat.$red-palette);
+$sean-chen-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 // The warn palette is optional (defaults to red).
 $sean-chen-warn: mat.define-palette(mat.$red-palette);
 
@@ -44,6 +43,25 @@ $github-grey: #333333;
 $youtube-red: #ff0000;
 $linkedin-blue: #0072b1;
 $artyclick-amber: #fbc200;
+$background-primary: #fffaf4;
+$background-primary-dark: #ffe3c1;
+$parchment: #fcf5e5;
+$dark-pastel-purple: #9a6dd7;
+
+.magic-mode-global {
+  background-color: #303030;
+  color: $dark-pastel-purple;
+
+  font-family: "halloween", sans-serif;
+
+  p {
+    font-family: "montserrat", sans-serif;
+    color: $parchment;
+  }
+  .card-body > p {
+    color: black;
+  }
+}
 
 @font-face {
   font-family: magic-school;
@@ -72,7 +90,7 @@ html {
 
 body {
   font-family: "montserrat", sans-serif;
-  background-color: #fffaf4;
+  background-color: $background-primary;
   margin: 0;
   // must be at most 32x32
   cursor: url("./assets/images/cursor_wand_two_small.png"), auto;

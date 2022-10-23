@@ -1,16 +1,12 @@
-import {
-  Component,
-  HostBinding,
-  HostListener,
-  ElementRef,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
-  faHatWizard,
-  faFolderOpen,
   faAddressCard,
+  faFolderOpen,
+  faHatWizard,
   faHome,
 } from '@fortawesome/free-solid-svg-icons';
+import { MagicService } from './services/magic.service';
 
 @Component({
   selector: 'app-root',
@@ -25,15 +21,17 @@ export class AppComponent {
   faAddressCard = faAddressCard;
   faHome = faHome;
   mobile: boolean = false;
+  isMagicMode: boolean = false;
 
-  @HostBinding('class') className = '';
-
-  constructor() {}
+  constructor(private magicService: MagicService) {}
 
   ngOnInit(): void {
-    this.toggleControl.valueChanges.subscribe((darkMode) => {
-      const darkClassName = 'darkMode';
-      this.className = darkMode ? darkClassName : '';
+    this.toggleControl.valueChanges.subscribe(() => {
+      this.magicService.toggleMagicMode();
+    });
+
+    this.magicService.magicModeChange.subscribe((value) => {
+      this.isMagicMode = value;
     });
 
     if (window.screen.width <= 640) {

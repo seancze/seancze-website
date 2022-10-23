@@ -44,22 +44,7 @@ ng-image-slider {
   flex-direction: column;
   width: clamp(20rem, calc(20rem + 2vw), 22rem);
   overflow: hidden;
-  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
-  background: linear-gradient(to right, #ffffff, #ece9e6);
-
-  @media (min-width: 1024px) {
-    &:hover {
-      transition: 0.3s ease-in-out;
-      transform: scale(1.05);
-      filter: grayscale(0%);
-    }
-    filter: blur(2px) opacity(50%);
-  }
-}
-
-.has-hovered {
-  filter: grayscale(0%);
 }
 
 .card-body {
@@ -114,7 +99,21 @@ ng-image-slider {
 .parchment {
   box-shadow: 2px 3px 10px black, 0 0 60px #8a4d0f inset;
   background: #fffef0;
-  // filter: url(#wavy2);
+}
+
+.magic-mode {
+  @media (min-width: 1024px) {
+    &:hover {
+      transition: 0.3s ease-in-out;
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+    filter: blur(2px) opacity(50%);
+  }
+}
+
+.magic-mode.has-hovered {
+  filter: grayscale(0%);
 }
 
 .card-body h4 {

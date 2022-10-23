@@ -40,7 +40,7 @@ nav {
   transition: all 0.3s;
   z-index: 999;
 }
-nav .scroll {
+nav > a {
   padding: 0 1.25rem;
   margin: 0.75rem 0.625rem;
   display: inline-block;
@@ -60,11 +60,20 @@ nav .scroll {
   }
 }
 
+.magic-mode-global.scrolled {
+  background-color: $dark-pastel-purple;
+  color: $artyclick-amber;
+  a {
+    color: white;
+    border: 1px solid white;
+    &:hover {
+      border: none;
+    }
+  }
+}
 .scrolled {
-  background-color: rgba(239, 247, 255, 0.7);
-  opacity: 1;
+  background-color: rgba(239, 247, 255);
   top: 0px;
-  // width: 100vw;
   justify-content: center;
   align-items: center;
   display: grid;

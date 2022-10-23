@@ -6,7 +6,9 @@
   >
     <button
       [style.background]="
-        hover === i ? 'no-repeat center/contain url(' + item.value + ')' : ''
+        hover === i
+          ? 'white no-repeat center/contain url(' + item.value + ')'
+          : ''
       "
       (mouseover)="hover = i"
       (mouseleave)="hover = -1"

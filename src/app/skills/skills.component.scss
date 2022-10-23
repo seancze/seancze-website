@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 h1 {
   text-align: center;
 }
@@ -31,7 +33,7 @@ button {
   padding: 1rem 0;
   border-radius: 0.5rem;
   cursor: inherit;
-  background-color: #ffe3c1;
+  background-color: $background-primary-dark;
   border-width: 0;
   transition: ease-in-out 0.3s;
   overflow: hidden;

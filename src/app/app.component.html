@@ -1,17 +1,17 @@
-<app-hero id="home"></app-hero>
+<app-hero id="home" [ngClass]="{ 'magic-mode-global': isMagicMode }"></app-hero>
 
-<div id="about">
-  <nav class="scrolled">
-    <a class="scroll" href="#home">
+<div id="about" [ngClass]="{ 'magic-mode-global': isMagicMode }">
+  <nav class="scrolled" [ngClass]="{ 'magic-mode-global': isMagicMode }">
+    <a href="#home">
       {{ !mobile ? "Home" : "" }}
 
       <fa-icon [icon]="faHome" *ngIf="mobile" class="fa-lg"></fa-icon>
     </a>
-    <a class="scroll" href="#about"
+    <a href="#about"
       >{{ !mobile ? "About" : "" }}
       <fa-icon [icon]="faAddressCard" *ngIf="mobile" class="fa-lg"></fa-icon>
     </a>
-    <a class="scroll" href="#projects"
+    <a href="#projects"
       >{{ !mobile ? "Projects" : "" }}
       <fa-icon [icon]="faFolderOpen" *ngIf="mobile" class="fa-lg"></fa-icon>
     </a>
