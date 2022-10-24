@@ -38,7 +38,7 @@ nav {
   overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  z-index: 999;
+  z-index: 1;
 }
 nav > a {
   padding: 0 1.25rem;
@@ -72,7 +72,7 @@ nav > a {
   }
 }
 .scrolled {
-  background-color: rgba(239, 247, 255);
+  background-color: $alice-blue;
   top: 0px;
   justify-content: center;
   align-items: center;
@@ -101,4 +101,42 @@ nav > a {
   mat-slide-toggle {
     transform: scale(0.75);
   }
+}
+
+// credits: https://www.w3schools.com/howto/howto_css_overlay.asp
+.overlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 1); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  margin: auto;
+}
+
+.overlay-done {
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  z-index: -1;
+}
+
+#magic-typewriter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: $artyclick-amber;
+  font-family: "halloween", "sans-serif";
+  text-align: center;
+  @media (min-width: 640px) {
+    white-space: nowrap;
+    font-size: 1.75rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+  }
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }

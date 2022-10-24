@@ -1,3 +1,12 @@
+<div
+  [ngClass]="{ overlay: isMagicMode, 'overlay-done': isTypewriterDone }"
+  (click)="skipTypewriter()"
+>
+  <span
+    id="magic-typewriter"
+    [ngStyle]="{ color: isMagicMode ? '' : '#eff7ff' }"
+  ></span>
+</div>
 <app-hero id="home" [ngClass]="{ 'magic-mode-global': isMagicMode }"></app-hero>
 
 <div id="about" [ngClass]="{ 'magic-mode-global': isMagicMode }">

@@ -7,6 +7,7 @@ import {
   faHome,
 } from '@fortawesome/free-solid-svg-icons';
 import { MagicService } from './services/magic.service';
+import Typewriter from 'typewriter-effect/dist/core';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent {
   faHome = faHome;
   mobile: boolean = false;
   isMagicMode: boolean = false;
+  isTypewriterDone: boolean = false;
 
   constructor(private magicService: MagicService) {}
 
@@ -37,6 +39,27 @@ export class AppComponent {
     if (window.screen.width <= 640) {
       this.mobile = true;
     }
+
+    this.magicService.magicModeChange.subscribe((value) => {
+      if (value) {
+        var typewriter = new Typewriter('#magic-typewriter');
+        typewriter
+          .typeString('I solemnly swear that I am up to no good')
+          .callFunction(() => {
+            this.isTypewriterDone = true;
+          })
+          .start();
+        console.log({ typewriter });
+      } else {
+        this.isTypewriterDone = false;
+      }
+
+      this.isMagicMode = value;
+    });
+  }
+
+  skipTypewriter() {
+    this.isTypewriterDone = true;
   }
 
   // ARCHIVED: generate custom cursor
