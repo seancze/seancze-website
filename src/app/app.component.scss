@@ -123,13 +123,25 @@ nav > a {
   z-index: -1;
 }
 
-#magic-typewriter {
+.magic-typewriter-container {
   position: absolute;
   top: 50%;
   left: 50%;
   color: $artyclick-amber;
-  font-family: "halloween", "sans-serif";
+  font-family: "halloween", sans-serif;
+  p {
+    font-family: "montserrat", sans-serif;
+    color: white;
+    font-size: 0.75rem;
+    font-style: italic;
+    opacity: 0.8;
+  }
   text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#magic-typewriter {
   @media (min-width: 640px) {
     white-space: nowrap;
     font-size: 1.75rem;
@@ -137,6 +149,4 @@ nav > a {
   @media (min-width: 1024px) {
     font-size: 3rem;
   }
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
 }
