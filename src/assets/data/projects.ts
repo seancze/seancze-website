@@ -233,8 +233,8 @@ export const PROJECTS: Project[] = [
     name: 'DealBuddies',
     description:
       'An IOS application to match foodies to food deals that require more than 1 person',
-    projectUrl: '',
-    videoUrl: 'https://haveyoueaten.wixsite.com/dealbuddies',
+    projectUrl: 'https://haveyoueaten.wixsite.com/dealbuddies',
+    videoUrl: 'https://youtu.be/z3KNwgcHSgE',
     githubUrl: '',
     techStack: ['Swift', 'Realm'],
     images: [

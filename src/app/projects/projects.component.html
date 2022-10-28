@@ -57,14 +57,26 @@
       <div class="card-footer">
         <div>
           <ul class="other-links-wrapper">
-            <li class="icon github" *ngIf="project.githubUrl">
+            <a
+              class="icon github"
+              *ngIf="project.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="{{ project.githubUrl }}"
+            >
               <span class="tooltip">Github</span>
               <fa-icon [icon]="faGithub"></fa-icon>
-            </li>
-            <li class="icon youtube" *ngIf="project.videoUrl">
+            </a>
+            <a
+              class="icon youtube"
+              *ngIf="project.videoUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="{{ project.videoUrl }}"
+            >
               <span class="tooltip">Youtube</span>
               <fa-icon [icon]="faYoutube"></fa-icon>
-            </li>
+            </a>
           </ul>
         </div>
 
