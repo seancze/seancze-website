@@ -32,23 +32,7 @@ $sean-chen-theme: mat.define-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($sean-chen-theme);
-
-/* You can add global styles to this file, and also import other style files */
-$paradise-pink: #ef476fff;
-$orange-yellow-crayola: #ffd166ff;
-$caribbean-green: #06d6a0ff;
-$midnight-green-eagle-green: #073b4cff;
-$vivid-sky-blue: #5bc3ebff;
-$github-grey: #333333;
-$youtube-red: #ff0000;
-$artyclick-amber: #fbc200;
-$background-primary: #fffaf4;
-$background-primary-dark: #ffe3c1;
-$parchment: #fcf5e5;
-$dark-pastel-purple: #9a6dd7;
-$alice-blue: #eff7ff;
-
-// TODO: Find a list of pictures for mischiefs
+@import "variables.scss";
 
 .magic-mode-global {
   // must be at most 32x32
@@ -67,10 +51,6 @@ $alice-blue: #eff7ff;
   }
 }
 
-@font-face {
-  font-family: magic-school;
-  src: url("./assets/font/MagicSchoolOne.ttf") format("truetype");
-}
 @font-face {
   font-family: halloween;
   src: url("./assets/font/Halloween-Bold-Grunge.otf") format("opentype");
