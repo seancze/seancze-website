@@ -42,8 +42,9 @@
   </div>
 
   <div class="about-column right">
-    <p [ngStyle]="{ 'font-style': isMagicMode ? 'italic' : '' }">
-      <span id="typewriter"></span><br /><span class="name">{{
+    <p>
+      <span id="typewriter" [ngClass]="{ 'magic-mode': isMagicMode }"></span>
+      <span class="name" [ngClass]="{ 'magic-mode': isMagicMode }">{{
         isMagicMode ? "- Albus Dumbledore" : "Sean Chen"
       }}</span>
     </p>

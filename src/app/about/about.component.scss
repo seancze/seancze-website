@@ -56,4 +56,23 @@
 
 #typewriter {
   font-size: large;
+  // the following 2 lines are used to ensure that height of entire screen does not increase when typewriter wraps to next line
+  display: block;
+  height: 1.75rem;
+}
+
+.magic-mode {
+  font-style: italic;
+}
+
+.magic-mode#typewriter {
+  font-size: 0.75rem;
+}
+
+.magic-mode.name {
+  font-size: 0.75rem;
+  display: inline-block;
+  @media (max-width: 640px) {
+    margin-top: 1.25rem;
+  }
 }
