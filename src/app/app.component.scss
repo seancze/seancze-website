@@ -37,7 +37,7 @@ nav {
   overflow: hidden;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  z-index: 1;
+  z-index: 9; // needs to be 9 to be above the arrows in project card
 }
 nav > a {
   padding: 0 1.25rem;
@@ -112,7 +112,7 @@ nav > a {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 1); /* Black background with opacity */
-  z-index: 9; /* Specify a stack order in case you're using a different order for other elements */
+  z-index: 10; // needs to be 10 as navbar is 9
   margin: auto;
 }
 
