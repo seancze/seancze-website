@@ -3,8 +3,15 @@
   <div class="about-column left">
     <div class="wrapper">
       <img
+        *ngIf="!isMagicMode"
         class="profile-pic"
-        src="../assets/images/profile-pic.jpg"
+        src="../assets/images/profile-picture/formal.jpg"
+        alt="profile"
+      />
+      <img
+        *ngIf="isMagicMode"
+        class="profile-pic"
+        src="../assets/images/profile-picture/informal.jpeg"
         alt="profile"
       />
       <div class="about-row">
@@ -39,7 +46,17 @@
       <span id="typewriter"></span><br /><span class="name">Sean Chen</span>
     </p>
 
-    <p>
+    <p *ngIf="isMagicMode">
+      When Sean's not busy trying to change the world, you can find him at
+      highly-rated food establishments, running or playing various racquet games
+      with friends, earnestly (but often awkwardly) asking others about their
+      own plans in life as he figures out his own, or chilling with a good book
+      or movie.
+      <br /><br />
+      Some of his mischiefs have been documented below.
+    </p>
+
+    <p *ngIf="!isMagicMode">
       I'm an aspiring software engineer interested in Mobile / Web development,
       Data Science, Machine Learning, Artificial Intelligence (AI) and well,
       anything tech-related!

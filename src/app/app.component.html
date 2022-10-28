@@ -4,7 +4,7 @@
 >
   <div class="magic-typewriter-container">
     <span id="magic-typewriter"></span>
-    <p>(click anywhere to skip)</p>
+    <p *ngIf="isMagicMode && !isTypewriterDone">(click anywhere to skip)</p>
   </div>
 </div>
 <app-hero id="home" [ngClass]="{ 'magic-mode-global': isMagicMode }"></app-hero>
@@ -32,7 +32,8 @@
   </nav>
   <div class="app-body">
     <app-about></app-about>
-    <app-skills></app-skills>
+    <app-mischiefs *ngIf="isMagicMode"></app-mischiefs>
+    <app-skills *ngIf="!isMagicMode"></app-skills>
     <app-projects id="projects"></app-projects>
   </div>
 </div>

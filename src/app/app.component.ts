@@ -44,7 +44,7 @@ export class AppComponent {
       if (value) {
         var typewriter = new Typewriter('#magic-typewriter');
         typewriter
-          .typeString('I solemnly swear that I am up to no good')
+          .typeString('I solemnly swear that I am up to no good...')
           .callFunction(() => {
             this.isTypewriterDone = true;
           })

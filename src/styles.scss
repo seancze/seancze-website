@@ -48,9 +48,11 @@ $parchment: #fcf5e5;
 $dark-pastel-purple: #9a6dd7;
 $alice-blue: #eff7ff;
 
+// TODO: Find a list of pictures for mischiefs
+
 .magic-mode-global {
   // must be at most 32x32
-  cursor: url("./assets/images/cursor_wand_two_small.png"), auto;
+  cursor: url("./assets/images/cursor_wand.png"), auto;
   background-color: #303030;
   font-family: "halloween", sans-serif;
   &:not(#home, nav) {
@@ -94,6 +96,10 @@ body {
   font-family: "montserrat", sans-serif;
   background-color: $background-primary;
   margin: 0;
+}
+
+h1 {
+  text-align: center;
 }
 
 .rounded {

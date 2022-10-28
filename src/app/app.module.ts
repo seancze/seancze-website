@@ -10,6 +10,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MischiefsComponent } from './mischiefs/mischiefs.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AboutComponent,
     ProjectsComponent,
     SkillsComponent,
+    MischiefsComponent,
   ],
   imports: [
     BrowserModule,
