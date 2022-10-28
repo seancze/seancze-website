@@ -1,10 +1,6 @@
-<div
-  [ngClass]="{ overlay: isMagicMode, 'overlay-done': isTypewriterDone }"
-  (click)="skipTypewriter()"
->
+<div [ngClass]="{ overlay: isMagicMode, 'overlay-done': isTypewriterDone }">
   <div class="magic-typewriter-container">
     <span id="magic-typewriter"></span>
-    <p *ngIf="isMagicMode && !isTypewriterDone">(click anywhere to skip)</p>
   </div>
 </div>
 <app-hero id="home" [ngClass]="{ 'magic-mode-global': isMagicMode }"></app-hero>

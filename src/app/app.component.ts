@@ -50,16 +50,10 @@ export class AppComponent {
           })
           .start();
         console.log({ typewriter });
-      } else {
-        this.isTypewriterDone = false;
       }
 
       this.isMagicMode = value;
     });
-  }
-
-  skipTypewriter() {
-    this.isTypewriterDone = true;
   }
 
   // ARCHIVED: generate custom cursor
