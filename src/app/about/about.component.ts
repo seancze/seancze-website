@@ -18,18 +18,40 @@ export class AboutComponent implements OnInit {
   constructor(private magicService: MagicService) {}
 
   ngOnInit(): void {
+    const defaultTypewriterStrings: string[] = [
+      'Hi, I am...',
+      'Define...',
+      'What is a...',
+      'Nice to meet you! My name is...',
+    ];
     new Typewriter('#typewriter', {
-      strings: [
-        'Hi, I am...',
-        'Define...',
-        'What is a...',
-        'Nice to meet you! My name is...',
-      ],
+      strings: defaultTypewriterStrings,
       autoStart: true,
       loop: true,
     });
+
     this.magicService.magicModeChange.subscribe((value) => {
       this.isMagicMode = value;
+      let typewriterStrings: string[] = defaultTypewriterStrings;
+      let delay: any = 'natural';
+      let deleteSpeed: any = 'natural';
+
+      if (this.isMagicMode) {
+        typewriterStrings = [
+          'It does not do to dwell on dreams and forget to live.',
+          'We must all face the choice between what is right, and what is easy.',
+          'Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.',
+        ];
+        delay = 50;
+        deleteSpeed = 1;
+      }
+      new Typewriter('#typewriter', {
+        strings: typewriterStrings,
+        autoStart: true,
+        delay: delay,
+        deleteSpeed: deleteSpeed,
+        loop: true,
+      });
     });
   }
 }

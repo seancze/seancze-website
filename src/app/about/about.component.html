@@ -42,16 +42,21 @@
   </div>
 
   <div class="about-column right">
-    <p>
-      <span id="typewriter"></span><br /><span class="name">Sean Chen</span>
+    <p [ngStyle]="{ 'font-style': isMagicMode ? 'italic' : '' }">
+      <span id="typewriter"></span><br /><span class="name">{{
+        isMagicMode ? "- Albus Dumbledore" : "Sean Chen"
+      }}</span>
     </p>
 
     <p *ngIf="isMagicMode">
+      Sean realised that the world was looking abit too dull. He thus felt
+      obligated to give it a tinge of magic.
+      <br /><br />
       When Sean's not busy trying to change the world, you can find him at
-      highly-rated food establishments, running or playing various racquet games
-      with friends, earnestly (but often awkwardly) asking others about their
-      own plans in life as he figures out his own, or chilling with a good book
-      or movie.
+      highly-rated food establishments 😋, running or playing various racquet
+      games with friends 🥰, earnestly (but often awkwardly) asking others about
+      their own plans in life as he figures out his own 🤔, or chilling with a
+      good book or movie 🤓.
       <br /><br />
       Some of his mischiefs have been documented below.
     </p>

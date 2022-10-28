@@ -42,14 +42,15 @@ export class AppComponent {
 
     this.magicService.magicModeChange.subscribe((value) => {
       if (value) {
-        var typewriter = new Typewriter('#magic-typewriter');
+        var typewriter = new Typewriter('#magic-typewriter', {
+          delay: 75,
+        });
         typewriter
           .typeString('I solemnly swear that I am up to no good...')
           .callFunction(() => {
             this.isTypewriterDone = true;
           })
           .start();
-        console.log({ typewriter });
       }
 
       this.isMagicMode = value;
