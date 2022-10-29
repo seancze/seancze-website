@@ -1,11 +1,12 @@
 <h1>Mischiefs</h1>
 <div class="mischiefs-container">
   <ng-image-slider
-    #nav
     [images]="mischiefs"
     [infinite]="true"
     [autoSlide]="true"
-    [imageSize]="{ width: '500px', height: '375px' }"
+    [imageSize]="
+      mobile ? { width: '97%' } : { width: '450px', height: '375px' }
+    "
     [imagePopup]="true"
     slideImage="1"
   ></ng-image-slider>
