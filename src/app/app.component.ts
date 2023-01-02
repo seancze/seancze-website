@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import {
   faAddressCard,
   faFolderOpen,
   faHatWizard,
   faHome,
-} from '@fortawesome/free-solid-svg-icons';
-import { MagicService } from './services/magic.service';
-import Typewriter from 'typewriter-effect/dist/core';
+} from "@fortawesome/free-solid-svg-icons";
+import { MagicService } from "./services/magic.service";
+import Typewriter from "typewriter-effect/dist/core";
+import { inject } from "@vercel/analytics";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = 'sean-chen';
+  title = "sean-chen";
   toggleControl = new FormControl(false);
   faHatWizard = faHatWizard;
   faFolderOpen = faFolderOpen;
@@ -28,6 +29,7 @@ export class AppComponent {
   constructor(private magicService: MagicService) {}
 
   ngOnInit(): void {
+    inject();
     this.toggleControl.valueChanges.subscribe(() => {
       this.magicService.toggleMagicMode();
     });
@@ -42,11 +44,11 @@ export class AppComponent {
 
     this.magicService.magicModeChange.subscribe((value) => {
       if (value) {
-        var typewriter = new Typewriter('#magic-typewriter', {
+        var typewriter = new Typewriter("#magic-typewriter", {
           delay: 75,
         });
         typewriter
-          .typeString('I solemnly swear that I am up to no good...')
+          .typeString("I solemnly swear that I am up to no good...")
           .callFunction(() => {
             this.isTypewriterDone = true;
           })

@@ -30,6 +30,7 @@
     "@scullyio/scully": "^2.1.41",
     "@scullyio/scully-plugin-puppeteer": "^2.1.41",
     "@types/jquery": "^3.5.14",
+    "@vercel/analytics": "^0.1.6",
     "jquery": "^3.6.1",
     "ng-image-slider": "^6.0.0",
     "rxjs": "~7.5.0",
