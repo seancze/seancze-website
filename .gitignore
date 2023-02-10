@@ -49,3 +49,6 @@ scully.log
 
 .vscode/
 .editorconfig
+
+# user files
+src/assets/images.zip
