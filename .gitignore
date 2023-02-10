@@ -46,6 +46,7 @@ vercel/
 
 # scully
 scully.log
+.scully/
 
 .vscode/
 .editorconfig
