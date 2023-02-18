@@ -2,6 +2,25 @@ import { Project } from "../../app/interfaces/project";
 
 export const PROJECTS: Project[] = [
   {
+    name: "Personal Site",
+    description:
+      "A snippet of who Sean Chen is and a fun introduction into AngularJS and vanilla CSS",
+    projectUrl: "https://seancze.com",
+    videoUrl: "",
+    githubUrl: "https://github.com/seancze/seancze-website",
+    techStack: ["AngularJS"],
+    images: [
+      {
+        image: "../../assets/images/portfolio/personal-site/1-home-page.png",
+        thumbImage:
+          "../../assets/images/portfolio/personal-site/1-home-page.png",
+        title: "1 Home Page",
+        alt: "1 Home Page",
+      },
+    ],
+  },
+
+  {
     name: "SAGE (Sharing And Gaining Experiences)",
     description:
       "An online knowledge-sharing platform that fosters the sharing of career guidance, and higher educational experiences in a safe and convenient manner.",
@@ -144,40 +163,6 @@ export const PROJECTS: Project[] = [
           "../../assets/images/portfolio/perfect-reality/4-dual-controls.jpg",
         title: "4 Dual Controls",
         alt: "4 Dual Controls",
-      },
-    ],
-  },
-  {
-    name: "Orientation 2021",
-    description: "Webpage built for SUTD Orientation 2021",
-    projectUrl: "",
-    videoUrl: "",
-    githubUrl: "https://github.com/seancze/orientation2021",
-    techStack: ["ReactJS", "TailwindCSS"],
-    images: [
-      {
-        image:
-          "../../assets/images/portfolio/orientation/1-orientation2021.png",
-        thumbImage:
-          "../../assets/images/portfolio/orientation/1-orientation2021.png",
-        title: "1 Orientation2021",
-        alt: "1 Orientation2021",
-      },
-      {
-        image:
-          "../../assets/images/portfolio/orientation/2-orientation2021.png",
-        thumbImage:
-          "../../assets/images/portfolio/orientation/2-orientation2021.png",
-        title: "2 Orientation2021",
-        alt: "2 Orientation2021",
-      },
-      {
-        image:
-          "../../assets/images/portfolio/orientation/3-orientation2021.png",
-        thumbImage:
-          "../../assets/images/portfolio/orientation/3-orientation2021.png",
-        title: "3 Orientation2021",
-        alt: "3 Orientation2021",
       },
     ],
   },
