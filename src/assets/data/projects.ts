@@ -90,6 +90,31 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    name: "VibeCheck",
+    description:
+      "A Slack Bot that helps managers better respond to interns remotely by conducting sentiment analysis and providing suggested responses.",
+    projectUrl: "https://devpost.com/software/vibecheck-5c2kz8",
+    videoUrl: "https://www.youtube.com/watch?v=VK1LYrRQ8Ss",
+    githubUrl: "https://github.com/justintanyf/VibeCheck",
+    techStack: ["Python", "HuggingFace", "OpenAI"],
+    images: [
+      {
+        image: "../../assets/images/portfolio/vibe-check/1-logo.webp",
+        thumbImage: "../../assets/images/portfolio/vibe-check/1-logo.webp",
+        title: "1 Logo",
+        alt: "1 Logo",
+      },
+      {
+        image:
+          "../../assets/images/portfolio/vibe-check/2-sentiment-analysis-and-prompt.webp",
+        thumbImage:
+          "../../assets/images/portfolio/vibe-check/2-sentiment-analysis-and-prompt.webp",
+        title: "2 Sentiment Analysis And Prompt",
+        alt: "2 Sentiment Analysis And Prompt",
+      },
+    ],
+  },
+  {
     name: "Runes",
     description: "An arcade game built to test your hand-eye coordination",
     projectUrl: "",
