@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormControl } from "@angular/forms";
+import { Title, Meta } from "@angular/platform-browser";
 import {
   faAddressCard,
   faFolderOpen,
@@ -26,9 +27,21 @@ export class AppComponent {
   isMagicMode: boolean = false;
   isTypewriterDone: boolean = false;
 
-  constructor(private magicService: MagicService) {}
+  constructor(
+    private titleService: Title,
+    private metaService: Meta,
+    private magicService: MagicService
+  ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle("Sean Chen");
+    this.metaService.addTags([
+      {
+        name: "description",
+        content:
+          "Hi! I am a software engineer & entrepreneur interested in AI, web development and building tech for social good. :)",
+      },
+    ]);
     inject();
     this.toggleControl.valueChanges.subscribe(() => {
       this.magicService.toggleMagicMode();
