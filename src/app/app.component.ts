@@ -10,6 +10,7 @@ import {
 import { MagicService } from "./services/magic.service";
 import Typewriter from "typewriter-effect/dist/core";
 import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 
 @Component({
   selector: "app-root",
@@ -43,6 +44,7 @@ export class AppComponent {
       },
     ]);
     inject();
+    injectSpeedInsights();
     this.toggleControl.valueChanges.subscribe(() => {
       this.magicService.toggleMagicMode();
     });
