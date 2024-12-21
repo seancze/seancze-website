@@ -11,7 +11,18 @@ export default function InitialScreen({ onArrowClick }) {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-gray-100">
+    <div
+      className="h-screen flex flex-col justify-center items-center animate-gradient"
+      style={{
+        backgroundImage: `linear-gradient(-45deg, 
+      var(--orange-yellow-crayola), 
+      var(--paradise-pink), 
+      var(--vivid-sky-blue), 
+      var(--caribbean-green))`,
+        backgroundSize: "400% 400%",
+      }}
+    >
+      {" "}
       <h1 className="text-6xl md:text-8xl font-bold mb-4">Sean Chen</h1>
       <h2 className="text-xl md:text-3xl mb-8">
         Software Engineer | Entrepreneur
@@ -23,7 +34,7 @@ export default function InitialScreen({ onArrowClick }) {
           aria-label="Scroll to next section"
         >
           <svg
-            className="w-10 h-10 text-gray-600"
+            className="w-10 h-10 text-white"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
