@@ -52,7 +52,7 @@ export default function Home() {
       >
         {hasShownTypewriter && (
           <div
-            className={`fixed inset-0 bg-black/90 z-50 flex items-center justify-center transition-opacity duration-1000 ease-in-out ${
+            className={`fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-1000 ease-in-out ${
               !isOverlayVisible
                 ? "opacity-0 pointer-events-none"
                 : "opacity-100"
