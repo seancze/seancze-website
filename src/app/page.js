@@ -58,7 +58,7 @@ export default function Home() {
                 : "opacity-100"
             }`}
           >
-            <div className="text-artyclick-amber sm:text-[1.75rem] lg:text-[3rem] sm:whitespace-nowrap">
+            <div className="text-artyclick-amber font-halloween sm:text-[1.75rem] lg:text-[3rem] sm:whitespace-nowrap">
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
