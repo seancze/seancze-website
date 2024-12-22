@@ -10,6 +10,12 @@ module.exports = {
       sans: ["Montserrat", "sans-serif"],
     },
     extend: {
+      fontFamily: {
+        halloween: ["Halloween", "sans-serif"],
+      },
+      cursor: {
+        "magic-wand": 'url("/images/cursor_wand.png"), auto',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

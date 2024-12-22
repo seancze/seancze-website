@@ -29,7 +29,9 @@ export default function Home() {
 
       <main
         className={
-          isMagicMode ? "bg-primary-dark text-parchment" : "bg-primary"
+          isMagicMode
+            ? "bg-primary-dark text-parchment font-halloween cursor-magic-wand"
+            : "bg-primary"
         }
       >
         <InitialScreen onArrowClick={() => scrollToSection("about")} />

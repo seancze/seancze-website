@@ -59,7 +59,7 @@ export const About = ({ isMagicMode }) => {
               </a>
             </div>
           </div>
-          <div className="md:w-2/3 md:pl-8">
+          <div className="md:w-2/3 md:pl-8 font-sans">
             <div className="flex flex-col">
               <div className={`${isMagicMode ? "text-base" : "text-2xl"} mb-2`}>
                 <Typewriter
