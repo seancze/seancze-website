@@ -11,7 +11,7 @@ export default function About() {
   ];
 
   return (
-    <div id="about" className="py-16 bg-white">
+    <div id="about" className="py-8">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-8">About</h2>
         <div className="flex flex-col md:flex-row items-center">
