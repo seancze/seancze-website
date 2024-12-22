@@ -28,6 +28,7 @@
   }
 }
 
+/* this allows us to apply the linear gradient background in the hero component using human-readable colour names in pure css*/
 :root {
   --orange-yellow-crayola: #ffd166;
   --paradise-pink: #ef476f;
