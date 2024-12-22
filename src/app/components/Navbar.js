@@ -9,7 +9,7 @@ const NavButton = ({ label, isActive, isMagicMode, onClick }) => (
       rounded-lg 
       transition-all duration-300 
       border 
-      text-sm sm:text-base
+      text-base
       whitespace-nowrap
       hover:scale-110 
       hover:border-[#FFA500] 
@@ -61,7 +61,7 @@ export const Navbar = ({
         ${isMagicMode ? "bg-dark-pastel-purple" : "bg-alice-blue"}
       `}
     >
-      <div className="container mx-auto px-2 sm:px-4">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center gap-2 sm:gap-4">
           <div className="flex gap-4">
             {navItems.map((item) => (
