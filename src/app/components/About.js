@@ -31,13 +31,24 @@ export const About = ({ isMagicMode }) => {
         </h2>
         <div className="flex flex-col md:flex-row items-start h-full">
           <div className="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
-            <Image
-              src="/images/profile-picture/formal.jpg"
-              alt="Sean Chen"
-              width={200}
-              height={200}
-              className="rounded-full mb-4"
-            />
+            {isMagicMode ? (
+              <Image
+                src={"/images/profile-picture/informal.jpeg"}
+                alt="Sean Chen informal"
+                width={200}
+                height={200}
+                className="rounded-full mb-4"
+              />
+            ) : (
+              <Image
+                src={"/images/profile-picture/formal.jpg"}
+                alt="Sean Chen formal"
+                width={200}
+                height={200}
+                className="rounded-full mb-4"
+              />
+            )}
+
             <div className="flex space-x-12">
               <a
                 href="https://github.com/seancze"
