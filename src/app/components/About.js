@@ -49,7 +49,7 @@ export const About = ({ isMagicMode }) => {
               />
             )}
 
-            <div className="flex space-x-12">
+            <div className="flex space-x-6">
               <a
                 href="https://github.com/seancze"
                 target="_blank"
