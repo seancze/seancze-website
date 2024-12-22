@@ -6,12 +6,12 @@ import { MISCHIEFS } from "@/app/constants";
 
 export const Mischiefs = () => {
   return (
-    <div id="mischiefs" className="py-16 scroll-mt-12">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-12">Mischiefs</h1>
-        <div className="flex justify-center">
-          <MischiefsSlider />
-        </div>
+    <div className="container mx-auto px-4">
+      <h1 className="text-4xl font-bold mb-8 text-dark-pastel-purple">
+        Mischiefs
+      </h1>
+      <div className="flex justify-center">
+        <MischiefsSlider />
       </div>
     </div>
   );
@@ -111,14 +111,14 @@ const MischiefsSlider = () => {
         <button
           onClick={prevImage}
           disabled={isAnimating}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-black rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
         >
           <FaChevronLeft className="h-4 w-4" />
         </button>
         <button
           onClick={nextImage}
           disabled={isAnimating}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-black rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
         >
           <FaChevronRight className="h-4 w-4" />
         </button>

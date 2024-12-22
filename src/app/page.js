@@ -27,7 +27,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-primary">
+      <main
+        className={
+          isMagicMode ? "bg-primary-dark text-parchment" : "bg-primary"
+        }
+      >
         <InitialScreen onArrowClick={() => scrollToSection("about")} />
         <Navbar
           currentSection={currentSection}
@@ -35,7 +39,7 @@ export default function Home() {
           isMagicMode={isMagicMode}
           onToggleMagicMode={toggleMagicMode}
         />
-        <About />
+        <About isMagicMode={isMagicMode} />
         <Projects />
       </main>
     </div>
