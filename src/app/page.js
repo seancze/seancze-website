@@ -37,59 +37,54 @@ export default function Home() {
   }, [isTypewriterDone]);
 
   return (
-    <div className="min-h-screen">
-      <Head>
-        <title>Sean Chen - Portfolio</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main
-        className={
-          isMagicMode
-            ? "bg-primary-dark text-parchment font-halloween cursor-magic-wand"
-            : "bg-primary"
-        }
-      >
-        {hasShownTypewriter && (
-          <div
-            className={`fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-1000 ease-in-out ${
-              !isOverlayVisible
-                ? "opacity-0 pointer-events-none"
-                : "opacity-100"
-            }`}
-          >
-            <div className="text-artyclick-amber font-halloween sm:text-[1.75rem] lg:text-[3rem] sm:whitespace-nowrap">
-              <Typewriter
-                onInit={(typewriter) => {
-                  typewriter
-                    .typeString("I solemnly swear that I am up to no good...")
-                    .callFunction(() => {
-                      setIsTypewriterDone(true);
-                    })
-                    .start();
-                }}
-                options={{
-                  delay: 75,
-                  cursor: "",
-                }}
-              />
-            </div>
+    <main
+      className={`
+          min-h-screen
+          ${
+            isMagicMode
+              ? "bg-primary-dark text-parchment font-halloween cursor-magic-wand"
+              : "bg-primary"
+          }
+          
+          `}
+    >
+      {hasShownTypewriter && (
+        <div
+          className={`fixed inset-0 bg-black z-50 flex items-center justify-center transition-opacity duration-1000 ease-in-out ${
+            !isOverlayVisible ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
+          <div className="text-artyclick-amber font-halloween sm:text-[1.75rem] lg:text-[3rem] sm:whitespace-nowrap">
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("I solemnly swear that I am up to no good...")
+                  .callFunction(() => {
+                    setIsTypewriterDone(true);
+                  })
+                  .start();
+              }}
+              options={{
+                delay: 75,
+                cursor: "",
+              }}
+            />
           </div>
-        )}
+        </div>
+      )}
 
-        <Hero
-          onArrowClick={() => scrollToSection("about")}
-          isMagicMode={isMagicMode}
-        />
-        <Navbar
-          currentSection={currentSection}
-          onNavigate={scrollToSection}
-          isMagicMode={isMagicMode}
-          onToggleMagicMode={toggleMagicMode}
-        />
-        <About isMagicMode={isMagicMode} />
-        <Projects isMagicMode={isMagicMode} />
-      </main>
-    </div>
+      <Hero
+        onArrowClick={() => scrollToSection("about")}
+        isMagicMode={isMagicMode}
+      />
+      <Navbar
+        currentSection={currentSection}
+        onNavigate={scrollToSection}
+        isMagicMode={isMagicMode}
+        onToggleMagicMode={toggleMagicMode}
+      />
+      <About isMagicMode={isMagicMode} />
+      <Projects isMagicMode={isMagicMode} />
+    </main>
   );
 }
