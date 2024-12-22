@@ -1,42 +1,30 @@
+"use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MISCHIEFS } from "@/app/constants";
 
 export const Mischiefs = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
   return (
     <div id="mischiefs" className="py-16 scroll-mt-12">
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mb-12">Mischiefs</h1>
         <div className="flex justify-center">
-          <MischiefsSlider isMobile={isMobile} />
+          <MischiefsSlider />
         </div>
       </div>
     </div>
   );
 };
 
-const MischiefsSlider = ({ isMobile }) => {
-  // Clone the first and last slides
+const MischiefsSlider = () => {
   const slides = [
     MISCHIEFS[MISCHIEFS.length - 1], // Clone of last slide
     ...MISCHIEFS,
     MISCHIEFS[0], // Clone of first slide
   ];
-  const [currentImageIndex, setCurrentImageIndex] = useState(1); // Start at the first real slide
+  // start at the first real slide (index 0 belongs to the clone of the last slide)
+  const [currentImageIndex, setCurrentImageIndex] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
 
@@ -64,8 +52,8 @@ const MischiefsSlider = ({ isMobile }) => {
     return () => clearInterval(interval);
   }, [currentImageIndex, isAnimating]);
 
-  // Re-enable transition after resetting without animation
   useEffect(() => {
+    // re-enable transition after resetting without animation
     if (!transitionEnabled) {
       requestAnimationFrame(() => {
         setTransitionEnabled(true);
@@ -75,52 +63,39 @@ const MischiefsSlider = ({ isMobile }) => {
 
   const handleTransitionEnd = () => {
     if (currentImageIndex === slides.length - 1) {
-      // Reached clone of first slide
+      // if we reach the clone of first slide, reset to the first real slide
       setTransitionEnabled(false);
-      setCurrentImageIndex(1); // Reset to first real slide
+      setCurrentImageIndex(1);
     } else if (currentImageIndex === 0) {
-      // Reached clone of last slide
+      // if we reach clone of last slide, reset to the last real slide
       setTransitionEnabled(false);
-      setCurrentImageIndex(slides.length - 2); // Reset to last real slide
+      setCurrentImageIndex(slides.length - 2);
     }
     setIsAnimating(false);
   };
 
-  const containerWidth = isMobile ? "97vw" : "1000px";
-  const imageWidth = isMobile ? window.innerWidth * 0.8 : 400; // In pixels
-  const imageHeight = isMobile ? 262 : 262; // In pixels
-  const gapValue = 16; // In pixels
-
   return (
-    <div className="relative">
-      <div
-        className="relative overflow-hidden rounded-xl"
-        style={{
-          width: containerWidth,
-          height: isMobile ? "auto" : `${imageHeight}px`,
-        }}
-      >
+    <div className="w-full">
+      <div className={`relative overflow-hidden rounded-xl h-64`}>
         <div
-          className={`flex ${
+          className={`flex gap-4 ${
             transitionEnabled
               ? "transition-transform duration-500 ease-in-out"
               : ""
           }`}
           style={{
-            transform: `translateX(-${
-              currentImageIndex * (imageWidth + gapValue)
-            }px)`,
-            gap: `${gapValue}px`,
+            // we use 25rem because image width is w-64 (24rem) and gap is gap-4 (1rem)
+            // hence, this helps us to move by 1 image at a time
+            transform: `translateX(-${currentImageIndex * 25}rem)`,
           }}
           onTransitionEnd={handleTransitionEnd}
         >
           {slides.map((slide, index) => (
             <div
               key={`${slide.image}-${index}`}
-              className="flex-shrink-0 rounded-xl overflow-hidden"
-              style={{ width: `${imageWidth}px` }}
+              className={`flex-shrink-0 rounded-xl overflow-hidden w-96`}
             >
-              <div className="relative" style={{ height: `${imageHeight}px` }}>
+              <div className={`relative h-64`}>
                 <Image
                   src={slide.image}
                   alt={slide.alt}
