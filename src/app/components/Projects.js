@@ -25,42 +25,135 @@ export default function Projects() {
 
 const ProjectCard = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState("");
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [nextImageIndex, setNextImageIndex] = useState(0);
 
   const nextImage = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex + 1) % project.images.length
-    );
+    if (isAnimating) return;
+
+    const next = (currentImageIndex + 1) % project.images.length;
+    setNextImageIndex(next);
+    setIsAnimating(true);
+    setSlideDirection("slide-left");
+
+    setTimeout(() => {
+      setCurrentImageIndex(next);
+      // delay clearing animation states slightly to prevent flicker
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(false);
+          setSlideDirection("");
+        });
+      });
+    }, 500);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + project.images.length) % project.images.length
-    );
+    if (isAnimating) return;
+
+    const prev =
+      (currentImageIndex - 1 + project.images.length) % project.images.length;
+    setNextImageIndex(prev);
+    setIsAnimating(true);
+    setSlideDirection("slide-right");
+
+    setTimeout(() => {
+      setCurrentImageIndex(prev);
+      // delay clearing animation states slightly to prevent flicker
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(false);
+          setSlideDirection("");
+        });
+      });
+    }, 500);
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl flex flex-col h-full">
+    <div className="bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl flex flex-col h-full overflow-hidden">
       <div className="relative h-48">
-        <Image
-          src={project.images[currentImageIndex].image}
-          alt={project.images[currentImageIndex].alt}
-          layout="fill"
-          objectFit="cover"
-        />
+        <style jsx>{`
+          @keyframes slideOutLeft {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-100%);
+            }
+          }
+          @keyframes slideOutRight {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(100%);
+            }
+          }
+          @keyframes slideInLeft {
+            from {
+              transform: translateX(100%);
+            }
+            to {
+              transform: translateX(0);
+            }
+          }
+          @keyframes slideInRight {
+            from {
+              transform: translateX(-100%);
+            }
+            to {
+              transform: translateX(0);
+            }
+          }
+        `}</style>
+        <div
+          className={`absolute w-full h-full ${
+            slideDirection === "slide-left"
+              ? "animate-[slideOutLeft_0.5s_ease-in-out]"
+              : slideDirection === "slide-right"
+              ? "animate-[slideOutRight_0.5s_ease-in-out]"
+              : ""
+          }`}
+        >
+          <Image
+            src={project.images[currentImageIndex].image}
+            alt={project.images[currentImageIndex].alt}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        {isAnimating && (
+          <div
+            className={`absolute w-full h-full ${
+              slideDirection === "slide-left"
+                ? "animate-[slideInLeft_0.5s_ease-in-out]"
+                : "animate-[slideInRight_0.5s_ease-in-out]"
+            }`}
+          >
+            <Image
+              src={project.images[nextImageIndex].image}
+              alt={project.images[nextImageIndex].alt}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        )}
         {project.images.length > 1 && (
           <>
             <button
               onClick={prevImage}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md transition-all duration-300 hover:bg-gray-100"
+              disabled={isAnimating}
+              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <FaChevronLeft className="h-6 w-6" />
+              <FaChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md transition-all duration-300 hover:bg-gray-100"
+              disabled={isAnimating}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <FaChevronRight className="h-6 w-6" />
+              <FaChevronRight className="h-4 w-4" />
             </button>
           </>
         )}
@@ -84,7 +177,6 @@ const ProjectCard = ({ project }) => {
               </div>
             ) : (
               <div key={index} className="h-12 flex items-center">
-                {/* Wrapper div to ensure that span is vertically centered*/}
                 <span className="bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-sm font-medium flex items-center justify-center h-8">
                   {tech}
                 </span>
@@ -114,7 +206,7 @@ const ProjectCard = ({ project }) => {
                             invisible opacity-0 group-hover:visible group-hover:opacity-100
                             group-hover:bottom-[calc(100%+12px)]"
                 >
-                  View on GitHub
+                  GitHub
                   <div
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
                               rotate-45 w-2 h-2 bg-github-grey
@@ -142,7 +234,7 @@ const ProjectCard = ({ project }) => {
                             invisible opacity-0 group-hover:visible group-hover:opacity-100
                             group-hover:bottom-[calc(100%+12px)]"
                 >
-                  Watch on YouTube
+                  YouTube
                   <div
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
                               rotate-45 w-2 h-2 bg-youtube-red
