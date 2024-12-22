@@ -72,7 +72,11 @@ export const About = ({ isMagicMode }) => {
           </div>
           <div className="md:w-2/3 md:pl-8 font-sans">
             <div className="flex flex-col">
-              <div className={`${isMagicMode ? "text-base" : "text-2xl"} mb-2`}>
+              <div
+                className={`${
+                  isMagicMode ? "text-xs italic" : "text-2xl"
+                } mb-2`}
+              >
                 <Typewriter
                   options={{
                     strings: typewriterStrings,
@@ -87,8 +91,9 @@ export const About = ({ isMagicMode }) => {
               {isMagicMode ? (
                 <p className="font-semibold italic">- Albus Dumbledore</p>
               ) : (
-                <h3 className="text-2xl font-semibold mb-4">Sean Chen</h3>
+                <h3 className="text-2xl font-semibold">Sean Chen</h3>
               )}
+              <br />
             </div>
             {isMagicMode ? (
               <p>
