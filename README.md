@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sean Chen
 
-## Getting Started
+## [Link to website](https://seancze.com)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Description
+This repository was [originally written in AngularJS](https://github.com/seancze/seancze-website-angular) before the release of ChatGPT. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For ease of maintainability, the codebase has been rewritten in NextJS with the help of ChatGPT.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+I do not consider frontend to be my strong suit and so it was especially difficult for me to create a website design from scratch.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To help others aspiring to create their own basic portfolio site that is uniquely theirs, I would highly recommend the following sites:
+1. https://www.noupe.com/design/web-developer-portfolio-examples.html
+2. https://freefrontend.com/
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Credits
+This website would not have been possible without the wealth of open source CSS templates, and JS packages available. As such, a best effort attempt has been made to add credits at the relevant lines of code.
