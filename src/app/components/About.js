@@ -68,6 +68,22 @@ export const About = ({ isMagicMode }) => {
               >
                 <FaLinkedin className="w-10 h-10 text-linkedin-blue" />
               </a>
+              <a
+                href="https://medium.com/@seancze"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={
+                    isMagicMode
+                      ? "/images/medium/white.svg"
+                      : "/images/medium/black.svg"
+                  }
+                  alt="Medium icon"
+                  width={40}
+                  height={40}
+                />
+              </a>
             </div>
           </div>
           <div className="md:w-2/3 md:pl-8 font-sans">
