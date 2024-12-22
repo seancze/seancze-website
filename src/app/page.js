@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Head from "next/head";
+import { useState } from "react";
 import { Hero } from "@/app/components/Hero";
 import { About } from "@/app/components/About";
 import { Projects } from "@/app/components/Projects";
