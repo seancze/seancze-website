@@ -3,8 +3,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import InitialScreen from "@/app/components/InitialScreen";
-import About from "@/app/components/About";
-import Skills from "@/app/components/Skills";
+import { About } from "@/app/components/About";
+import { Projects } from "@/app/components/Projects";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState("home");
@@ -24,7 +24,7 @@ export default function Home() {
       <main className="bg-primary">
         <InitialScreen onArrowClick={() => scrollToSection("about")} />
         <About />
-        <Skills />
+        <Projects />
       </main>
     </div>
   );

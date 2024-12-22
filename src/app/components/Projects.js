@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { PROJECTS, TECH_STACK_IMAGES } from "@/app/constants";
 
-export default function Projects() {
+export const Projects = () => {
   return (
     <div id="projects" className="py-16">
       <div className="container mx-auto px-4">
@@ -21,7 +21,7 @@ export default function Projects() {
       </div>
     </div>
   );
-}
+};
 
 const ProjectCard = ({ project }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

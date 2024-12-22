@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
+import { Skills } from "@/app/components/Skills";
 
-export default function About() {
+export const About = () => {
   const typewriterStrings = [
     "Hi, I am...",
     "Define...",
@@ -11,10 +12,10 @@ export default function About() {
   ];
 
   return (
-    <div id="about" className="py-8">
-      <div className="container mx-auto px-4">
+    <div id="about" className="min-h-screen flex flex-col py-8">
+      <div className="container mx-auto px-4 flex-grow">
         <h2 className="text-4xl font-bold mb-8">About</h2>
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row items-start h-full">
           <div className="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
             <Image
               src="/images/profile-picture/formal.jpg"
@@ -82,6 +83,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      <Skills />
     </div>
   );
-}
+};

@@ -17,7 +17,7 @@ const skills = [
   "TailwindCSS",
 ];
 
-export default function Skills() {
+export const Skills = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   return (
@@ -59,4 +59,4 @@ export default function Skills() {
       </div>
     </div>
   );
-}
+};
