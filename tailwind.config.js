@@ -15,6 +15,8 @@ module.exports = {
         foreground: "var(--foreground)",
         "linkedin-blue": "#0072B1",
         "github-grey": "#333333",
+        primary: "#FFFAF4",
+        "primary-dark": "#FFE3c1",
       },
     },
   },
