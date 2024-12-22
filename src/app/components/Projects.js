@@ -18,7 +18,7 @@ export const Projects = ({ isMagicMode }) => {
 
   return (
     // scroll-mt-24 is used to ensure that the navbar does not cover the top of the Projects section
-    <div id="projects" className="scroll-mt-24">
+    <div id="projects" className="scroll-mt-24 pb-12">
       <div className="container mx-auto px-4">
         <h2
           className={`text-4xl font-bold mb-12 ${
