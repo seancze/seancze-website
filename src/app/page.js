@@ -45,7 +45,7 @@ export default function Home() {
           onToggleMagicMode={toggleMagicMode}
         />
         <About isMagicMode={isMagicMode} />
-        <Projects />
+        <Projects isMagicMode={isMagicMode} />
       </main>
     </div>
   );

@@ -8,15 +8,34 @@ import {
 } from "react-icons/fa";
 import { PROJECTS, TECH_STACK_IMAGES } from "@/app/constants";
 
-export const Projects = () => {
+export const Projects = ({ isMagicMode }) => {
+  // track cards that have been hovered over
+  const [hoveredCards, setHoveredCards] = useState(new Set());
+
+  const handleMouseEnter = (index) => {
+    setHoveredCards((prev) => new Set([...prev, index]));
+  };
+
   return (
-    // scroll-mt-12 is used to ensure that the navbar does not cover the top of the Projects section
-    <div id="projects" className="py-16 scroll-mt-12">
+    // scroll-mt-24 is used to ensure that the navbar does not cover the top of the Projects section
+    <div id="projects" className="scroll-mt-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12">Projects</h2>
+        <h2
+          className={`text-4xl font-bold mb-12 ${
+            isMagicMode && "text-dark-pastel-purple"
+          }`}
+        >
+          Projects
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <ProjectCard
+              key={index}
+              project={project}
+              isMagicMode={isMagicMode}
+              isHovered={hoveredCards.has(index)}
+              onMouseEnter={() => handleMouseEnter(index)}
+            />
           ))}
         </div>
       </div>
@@ -24,7 +43,7 @@ export const Projects = () => {
   );
 };
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
@@ -40,7 +59,7 @@ const ProjectCard = ({ project }) => {
 
     setTimeout(() => {
       setCurrentImageIndex(next);
-      // delay clearing animation states slightly to prevent flicker
+      // delay clearing animation states slightly to prevent image flickering
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setIsAnimating(false);
@@ -72,7 +91,16 @@ const ProjectCard = ({ project }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl flex flex-col h-full overflow-hidden">
+    <div
+      className={`rounded-xl transition-all duration-300 flex flex-col h-full overflow-hidden
+      ${
+        isMagicMode
+          ? "parchment magic-card"
+          : "bg-white shadow-lg hover:shadow-2xl"
+      }
+      ${isHovered ? "hovered-card" : ""}`}
+      onMouseEnter={onMouseEnter}
+    >
       <div className="relative h-48">
         <style jsx>{`
           @keyframes slideOutLeft {
@@ -147,14 +175,14 @@ const ProjectCard = ({ project }) => {
               disabled={isAnimating}
               className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <FaChevronLeft className="h-4 w-4" />
+              <FaChevronLeft className="h-4 w-4 text-black" />
             </button>
             <button
               onClick={nextImage}
               disabled={isAnimating}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <FaChevronRight className="h-4 w-4" />
+              <FaChevronRight className="h-4 w-4 text-black" />
             </button>
           </>
         )}
@@ -185,10 +213,18 @@ const ProjectCard = ({ project }) => {
             );
           })}
         </div>
-        <h3 className="text-2xl font-semibold mb-3">{project.name}</h3>
-        <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
+        <h3
+          className={`text-2xl font-semibold mb-3 ${
+            isMagicMode && "text-dark-pastel-purple"
+          }`}
+        >
+          {project.name}
+        </h3>
+        <p className="text-gray-600 mb-4 flex-grow font-sans">
+          {project.description}
+        </p>
         <div className="flex justify-between items-center mt-auto">
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 font-sans">
             {project.githubUrl && (
               <div className="relative group">
                 <a
