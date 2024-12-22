@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -80,7 +81,7 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
 
     setTimeout(() => {
       setCurrentImageIndex(prev);
-      // delay clearing animation states slightly to prevent flicker
+      // delay clearing animation states slightly to prevent image flickering
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setIsAnimating(false);
@@ -150,8 +151,11 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
             alt={project.images[currentImageIndex].alt}
             layout="fill"
             objectFit="cover"
+            loading="eager"
+            priority={true}
           />
         </div>
+
         {isAnimating && (
           <div
             className={`absolute w-full h-full ${
@@ -165,6 +169,8 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
               alt={project.images[nextImageIndex].alt}
               layout="fill"
               objectFit="cover"
+              loading="eager"
+              priority={true}
             />
           </div>
         )}
