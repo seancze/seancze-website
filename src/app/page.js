@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Head from "next/head";
-import InitialScreen from "@/app/components/InitialScreen";
+import { Hero } from "@/app/components/Hero";
 import { About } from "@/app/components/About";
 import { Projects } from "@/app/components/Projects";
 import { Navbar } from "@/app/components/Navbar";
@@ -34,7 +34,10 @@ export default function Home() {
             : "bg-primary"
         }
       >
-        <InitialScreen onArrowClick={() => scrollToSection("about")} />
+        <Hero
+          onArrowClick={() => scrollToSection("about")}
+          isMagicMode={isMagicMode}
+        />
         <Navbar
           currentSection={currentSection}
           onNavigate={scrollToSection}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-export default function InitialScreen({ onArrowClick }) {
+export const Hero = ({ onArrowClick, isMagicMode }) => {
   const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function InitialScreen({ onArrowClick }) {
   return (
     <div
       id="home"
-      className="h-screen flex flex-col justify-center items-center animate-gradient"
+      className={`h-screen flex flex-col justify-center items-center animate-gradient text-black`}
       style={{
         backgroundImage: `linear-gradient(-45deg, 
       var(--orange-yellow-crayola), 
@@ -25,9 +25,13 @@ export default function InitialScreen({ onArrowClick }) {
     >
       {" "}
       <h1 className="text-6xl md:text-8xl font-bold mb-4">Sean Chen</h1>
-      <h2 className="text-xl md:text-3xl mb-8">
-        Software Engineer | Entrepreneur
-      </h2>
+      {isMagicMode ? (
+        <h2 className="text-xl md:text-3xl mb-8">Tech Wizard | Entrepreneur</h2>
+      ) : (
+        <h2 className="text-xl md:text-3xl mb-8">
+          Software Engineer | Entrepreneur
+        </h2>
+      )}
       {showArrow && (
         <button
           onClick={onArrowClick}
@@ -49,4 +53,4 @@ export default function InitialScreen({ onArrowClick }) {
       )}
     </div>
   );
-}
+};
