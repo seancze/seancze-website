@@ -29,7 +29,7 @@ export const About = ({ isMagicMode }) => {
         >
           About
         </h2>
-        <div className="flex flex-col md:flex-row items-start h-full">
+        <div className="flex flex-col md:flex-row items-center h-full">
           <div className="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
             {isMagicMode ? (
               <Image
