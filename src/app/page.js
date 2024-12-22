@@ -1,10 +1,11 @@
 "use client";
 
-import Head from "next/head";
 import { useState } from "react";
+import Head from "next/head";
 import InitialScreen from "@/app/components/InitialScreen";
 import { About } from "@/app/components/About";
 import { Projects } from "@/app/components/Projects";
+import { Navbar } from "@/app/components/Navbar";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState("home");
@@ -23,6 +24,7 @@ export default function Home() {
 
       <main className="bg-primary">
         <InitialScreen onArrowClick={() => scrollToSection("about")} />
+        <Navbar currentSection={currentSection} onNavigate={scrollToSection} />
         <About />
         <Projects />
       </main>

@@ -12,6 +12,7 @@ export default function InitialScreen({ onArrowClick }) {
 
   return (
     <div
+      id="home"
       className="h-screen flex flex-col justify-center items-center animate-gradient"
       style={{
         backgroundImage: `linear-gradient(-45deg, 

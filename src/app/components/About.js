@@ -12,7 +12,8 @@ export const About = () => {
   ];
 
   return (
-    <div id="about" className="min-h-screen flex flex-col py-8">
+    // scroll-mt-16 is used to ensure that the navbar does not cover the top of the About section
+    <div id="about" className="min-h-screen flex flex-col py-8 scroll-mt-16">
       <div className="container mx-auto px-4 flex-grow">
         <h2 className="text-4xl font-bold mb-8">About</h2>
         <div className="flex flex-col md:flex-row items-start h-full">
