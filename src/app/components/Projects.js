@@ -40,7 +40,7 @@ const ProjectCard = ({ project }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl flex flex-col h-full">
+    <div className="bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl flex flex-col h-full">
       <div className="relative h-48">
         <Image
           src={project.images[currentImageIndex].image}
@@ -78,7 +78,7 @@ const ProjectCard = ({ project }) => {
                     className="object-contain"
                   />
                 </div>
-                <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap mb-2">
+                <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-github-grey text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap mb-2">
                   {tech}
                 </span>
               </div>
@@ -102,13 +102,26 @@ const ProjectCard = ({ project }) => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md transition-all duration-300 group-hover:bg-[#333]"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-github-grey text-github-grey hover:text-white"
                 >
-                  <FaGithub className="w-6 h-6 text-[#333] group-hover:text-white transition-colors duration-300" />
+                  <FaGithub className="w-6 h-6" />
                 </a>
-                <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <div
+                  className="absolute w-auto min-w-max left-1/2 -translate-x-1/2 
+                            bottom-[calc(100%+5px)] rounded-md py-2 px-3 bg-github-grey
+                            text-xs font-bold text-white shadow-lg
+                            transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
+                            invisible opacity-0 group-hover:visible group-hover:opacity-100
+                            group-hover:bottom-[calc(100%+12px)]"
+                >
                   View on GitHub
-                </span>
+                  <div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
+                              rotate-45 w-2 h-2 bg-github-grey
+                              transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
+                              group-hover:bg-github-grey"
+                  />
+                </div>
               </div>
             )}
             {project.videoUrl && (
@@ -117,13 +130,26 @@ const ProjectCard = ({ project }) => {
                   href={project.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md transition-all duration-300 group-hover:bg-[#FF0000]"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md transition-all duration-300 hover:bg-youtube-red text-youtube-red hover:text-white"
                 >
-                  <FaYoutube className="w-6 h-6 text-[#FF0000] group-hover:text-white transition-colors duration-300" />
+                  <FaYoutube className="w-6 h-6" />
                 </a>
-                <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                <div
+                  className="absolute w-auto min-w-max left-1/2 -translate-x-1/2 
+                            bottom-[calc(100%+5px)] rounded-md py-2 px-3 bg-youtube-red
+                            text-xs font-bold text-white shadow-lg
+                            transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
+                            invisible opacity-0 group-hover:visible group-hover:opacity-100
+                            group-hover:bottom-[calc(100%+12px)]"
+                >
                   Watch on YouTube
-                </span>
+                  <div
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
+                              rotate-45 w-2 h-2 bg-youtube-red
+                              transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
+                              group-hover:bg-youtube-red"
+                  />
+                </div>
               </div>
             )}
           </div>
