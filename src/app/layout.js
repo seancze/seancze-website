@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { HotjarInitialiser } from "@/app/components/HotjarInitialiser";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         {children}
         <HotjarInitialiser />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
