@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Typewriter from "typewriter-effect";
 
 export default function About() {
+  const typewriterStrings = [
+    "Hi, I am...",
+    "Define...",
+    "What is a...",
+    "Nice to meet you! My name is...",
+  ];
+
   return (
     <div id="about" className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -33,7 +41,21 @@ export default function About() {
             </div>
           </div>
           <div className="md:w-2/3 md:pl-8">
-            <h3 className="text-2xl font-semibold mb-4">Sean Chen</h3>
+            <div className="flex flex-col">
+              <div className="text-2xl mb-2">
+                <Typewriter
+                  options={{
+                    strings: typewriterStrings,
+                    autoStart: true,
+                    loop: true,
+                    delay: 50,
+                    deleteSpeed: 25,
+                    pauseFor: 1500,
+                  }}
+                />
+              </div>
+              <h3 className="text-2xl font-semibold mb-4">Sean Chen</h3>
+            </div>
             <p className="mb-4">
               I&apos;m a software engineer and entrepreneur interested in Mobile
               / Web development, Data Science, Machine Learning, and Artificial
