@@ -3,6 +3,7 @@ export const Hero = ({ onArrowClick, isMagicMode }) => {
     <div
       id="home"
       className={`h-screen flex flex-col justify-center items-center animate-gradient text-black`}
+      // credits: https://codepen.io/P1N2O/pen/pyBNzX
       style={{
         backgroundImage: `linear-gradient(-45deg, 
       var(--orange-yellow-crayola), 

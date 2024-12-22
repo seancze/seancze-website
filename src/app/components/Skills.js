@@ -46,6 +46,7 @@ export const Skills = () => {
                 backgroundSize: "auto 80%",
               }}
             >
+              {/* credits: https://codepen.io/team/css-tricks/pen/jOarVmy */}
               <span
                 className={`inline-block transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-[1000%]`}
               >
