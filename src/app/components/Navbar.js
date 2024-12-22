@@ -23,8 +23,10 @@ export const Navbar = ({
                     ? isMagicMode
                       ? "font-bold border-2 shadow-md backdrop-blur-sm"
                       : "shadow-md bg-white/80 backdrop-blur-sm border-gray-400"
+                    : isMagicMode
+                    ? "bg-dark-pastel-purple"
                     : "hover:text-white bg-white/80 backdrop-blur-sm border-gray-200"
-                } ${isMagicMode ? "text-white bg-inherit" : "text-gray-800"}`}
+                } ${isMagicMode ? "text-white" : "text-gray-800"}`}
             >
               Home
             </button>
@@ -36,8 +38,10 @@ export const Navbar = ({
                     ? isMagicMode
                       ? "font-bold border-2 shadow-md backdrop-blur-sm"
                       : "shadow-md bg-white/80 backdrop-blur-sm border-gray-400"
+                    : isMagicMode
+                    ? "bg-dark-pastel-purple"
                     : "hover:text-white bg-white/80 backdrop-blur-sm border-gray-200"
-                } ${isMagicMode ? "text-white bg-inherit" : "text-gray-800"}`}
+                } ${isMagicMode ? "text-white" : "text-gray-800"}`}
             >
               About
             </button>
@@ -49,8 +53,10 @@ export const Navbar = ({
                     ? isMagicMode
                       ? "font-bold border-2 shadow-md backdrop-blur-sm"
                       : "shadow-md bg-white/80 backdrop-blur-sm border-gray-400"
+                    : isMagicMode
+                    ? "bg-dark-pastel-purple"
                     : "hover:text-white bg-white/80 backdrop-blur-sm border-gray-200"
-                } ${isMagicMode ? "text-white bg-inherit" : "text-gray-800"}`}
+                } ${isMagicMode ? "text-white" : "text-gray-800"}`}
             >
               Projects
             </button>
