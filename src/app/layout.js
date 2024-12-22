@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { HotjarInitialiser } from "@/app/components/HotjarInitialiser";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       >
         {children}
         <HotjarInitialiser />
+        <Analytics />
       </body>
     </html>
   );
