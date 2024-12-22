@@ -8,7 +8,7 @@ export const Navbar = ({
 }) => {
   return (
     <nav
-      className={`sticky top-0 w-full text-center py-4 overflow-hidden transition-all duration-300 backdrop-blur-sm translate-y-0 opacity-100 z-50 ${
+      className={`sticky top-0 w-full text-center py-4 overflow-hidden transition-all duration-300 backdrop-blur-sm translate-y-0 opacity-100 z-40 ${
         isMagicMode ? "bg-dark-pastel-purple " : "bg-alice-blue"
       }`}
     >
