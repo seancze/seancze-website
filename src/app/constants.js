@@ -35,7 +35,6 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/personal-site/1-home-page.png",
-        thumbImage: "/images/portfolio/personal-site/1-home-page.png",
         title: "1 Home Page",
         alt: "1 Home Page",
       },
@@ -53,25 +52,21 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/sage/1-intro.png",
-        thumbImage: "/images/portfolio/sage/1-intro.png",
         title: "1 Intro",
         alt: "1 Intro",
       },
       {
         image: "/images/portfolio/sage/2-feed.png",
-        thumbImage: "/images/portfolio/sage/2-feed.png",
         title: "2 Feed",
         alt: "2 Feed",
       },
       {
         image: "/images/portfolio/sage/3-profile.png",
-        thumbImage: "/images/portfolio/sage/3-profile.png",
         title: "3 Profile",
         alt: "3 Profile",
       },
       {
         image: "/images/portfolio/sage/4-telebot.png",
-        thumbImage: "/images/portfolio/sage/4-telebot.png",
         title: "4 Telebot",
         alt: "4 Telebot",
       },
@@ -87,22 +82,16 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/facial-recognition-for-all/1-combined.png",
-        thumbImage:
-          "/images/portfolio/facial-recognition-for-all/1-combined.png",
         title: "1 Combined",
         alt: "1 Combined",
       },
       {
         image: "/images/portfolio/facial-recognition-for-all/2-original.png",
-        thumbImage:
-          "/images/portfolio/facial-recognition-for-all/2-original.png",
         title: "2 Original",
         alt: "2 Original",
       },
       {
         image: "/images/portfolio/facial-recognition-for-all/3-enhanced.png",
-        thumbImage:
-          "/images/portfolio/facial-recognition-for-all/3-enhanced.png",
         title: "3 Enhanced",
         alt: "3 Enhanced",
       },
@@ -119,14 +108,11 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/vibe-check/1-logo.webp",
-        thumbImage: "/images/portfolio/vibe-check/1-logo.webp",
         title: "1 Logo",
         alt: "1 Logo",
       },
       {
         image:
-          "/images/portfolio/vibe-check/2-sentiment-analysis-and-prompt.webp",
-        thumbImage:
           "/images/portfolio/vibe-check/2-sentiment-analysis-and-prompt.webp",
         title: "2 Sentiment Analysis And Prompt",
         alt: "2 Sentiment Analysis And Prompt",
@@ -143,7 +129,6 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/runes/game.png",
-        thumbImage: "/images/portfolio/runes/game.png",
         title: "Game",
         alt: "Game",
       },
@@ -160,7 +145,6 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/hawkergo/poster.png",
-        thumbImage: "/images/portfolio/hawkergo/poster-thumbnail.jpeg",
         title: "Poster",
         alt: "Poster",
       },
@@ -177,27 +161,22 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/perfect-reality/1-start-screen.png",
-        thumbImage: "/images/portfolio/perfect-reality/1-start-screen.png",
         title: "1 Start Screen",
         alt: "1 Start Screen",
       },
       {
         image: "/images/portfolio/perfect-reality/2-symptom-monitoring.png",
-        thumbImage:
-          "/images/portfolio/perfect-reality/2-symptom-monitoring.png",
+
         title: "2 Symptom Monitoring",
         alt: "2 Symptom Monitoring",
       },
       {
         image: "/images/portfolio/perfect-reality/3-handwashing-technique.jpg",
-        thumbImage:
-          "/images/portfolio/perfect-reality/3-handwashing-technique.jpg",
         title: "3 Handwashing Technique",
         alt: "3 Handwashing Technique",
       },
       {
         image: "/images/portfolio/perfect-reality/4-dual-controls.jpg",
-        thumbImage: "/images/portfolio/perfect-reality/4-dual-controls.jpg",
         title: "4 Dual Controls",
         alt: "4 Dual Controls",
       },
@@ -214,13 +193,11 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/feedback-bot/1-feedback-bot.png",
-        thumbImage: "/images/portfolio/feedback-bot/1-feedback-bot.png",
         title: "1 Feedback Bot",
         alt: "1 Feedback Bot",
       },
       {
         image: "/images/portfolio/feedback-bot/2-feedback-bot.png",
-        thumbImage: "/images/portfolio/feedback-bot/2-feedback-bot.png",
         title: "2 Feedback Bot",
         alt: "2 Feedback Bot",
       },
@@ -237,13 +214,11 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/actfaster/1-actfaster.png",
-        thumbImage: "/images/portfolio/actfaster/1-actfaster.png",
         title: "1 Actfaster",
         alt: "1 Actfaster",
       },
       {
         image: "/images/portfolio/actfaster/2-actfaster.png",
-        thumbImage: "/images/portfolio/actfaster/2-actfaster.png",
         title: "2 Actfaster",
         alt: "2 Actfaster",
       },
@@ -260,13 +235,11 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/dealbuddies/1-core-features.png",
-        thumbImage: "/images/portfolio/dealbuddies/1-core-features.png",
         title: "1 Core Features",
         alt: "1 Core Features",
       },
       {
         image: "/images/portfolio/dealbuddies/2-demo-page.png",
-        thumbImage: "/images/portfolio/dealbuddies/2-demo-page.png",
         title: "2 Demo Page",
         alt: "2 Demo Page",
       },
@@ -283,7 +256,6 @@ export const PROJECTS = [
     images: [
       {
         image: "/images/portfolio/jiakbabuay/webpage.png",
-        thumbImage: "/images/portfolio/jiakbabuay/webpage.png",
         title: "Webpage",
         alt: "Webpage",
       },
@@ -294,126 +266,102 @@ export const PROJECTS = [
 export const MISCHIEFS = [
   {
     image: "/images/mischiefs/sights-1.jpg",
-    thumbImage: "/images/mischiefs/sights-1.jpg",
     alt: "Sights-1",
   },
   {
     image: "/images/mischiefs/sights-2.jpg",
-    thumbImage: "/images/mischiefs/sights-2.jpg",
     alt: "Sights-2",
   },
   {
     image: "/images/mischiefs/sights-3.jpg",
-    thumbImage: "/images/mischiefs/sights-3.jpg",
     alt: "Sights-3",
   },
   {
     image: "/images/mischiefs/sights-4.jpg",
-    thumbImage: "/images/mischiefs/sights-4.jpg",
     alt: "Sights-4",
   },
   {
     image: "/images/mischiefs/sights-5.jpg",
-    thumbImage: "/images/mischiefs/sights-5.jpg",
     alt: "Sights-5",
   },
   {
     image: "/images/mischiefs/sights-6.jpg",
-    thumbImage: "/images/mischiefs/sights-6.jpg",
     alt: "Sights-6",
   },
   {
     image: "/images/mischiefs/sights-7.jpg",
-    thumbImage: "/images/mischiefs/sights-7.jpg",
     alt: "Sights-7",
   },
   {
     image: "/images/mischiefs/sights-8.jpg",
-    thumbImage: "/images/mischiefs/sights-8.jpg",
     alt: "Sights-8",
   },
   {
     image: "/images/mischiefs/sights-9.jpg",
-    thumbImage: "/images/mischiefs/sights-9.jpg",
     alt: "Sights-9",
   },
   {
     image: "/images/mischiefs/sights-10.jpg",
-    thumbImage: "/images/mischiefs/sights-10.jpg",
     alt: "Sights-10",
   },
   {
     image: "/images/mischiefs/sights-11.jpg",
-    thumbImage: "/images/mischiefs/sights-11.jpg",
     alt: "Sights-11",
   },
   {
     image: "/images/mischiefs/sights-12.jpg",
-    thumbImage: "/images/mischiefs/sights-12.jpg",
     alt: "Sights-12",
   },
   {
     image: "/images/mischiefs/sights-13.jpg",
-    thumbImage: "/images/mischiefs/sights-13.jpg",
     alt: "Sights-13",
   },
   {
     image: "/images/mischiefs/sights-14.jpg",
-    thumbImage: "/images/mischiefs/sights-14.jpg",
     alt: "Sights-14",
   },
   {
     image: "/images/mischiefs/sights-15.jpg",
-    thumbImage: "/images/mischiefs/sights-15.jpg",
     alt: "Sights-15",
   },
   {
     image: "/images/mischiefs/food-1.jpg",
-    thumbImage: "/images/mischiefs/food-1.jpg",
     alt: "Food-1",
   },
   {
     image: "/images/mischiefs/food-2.jpg",
-    thumbImage: "/images/mischiefs/food-2.jpg",
     alt: "Food-2",
   },
 
   {
     image: "/images/mischiefs/food-3.jpg",
-    thumbImage: "/images/mischiefs/food-3.jpg",
     alt: "Food-3",
   },
 
   {
     image: "/images/mischiefs/food-4.jpg",
-    thumbImage: "/images/mischiefs/food-4.jpg",
     alt: "Food-4",
   },
 
   {
     image: "/images/mischiefs/food-5.jpg",
-    thumbImage: "/images/mischiefs/food-5.jpg",
     alt: "Food-5",
   },
 
   {
     image: "/images/mischiefs/food-6.jpg",
-    thumbImage: "/images/mischiefs/food-6.jpg",
     alt: "Food-6",
   },
   {
     image: "/images/mischiefs/food-7.jpg",
-    thumbImage: "/images/mischiefs/food-7.jpg",
     alt: "Food-7",
   },
   {
     image: "/images/mischiefs/food-8.jpg",
-    thumbImage: "/images/mischiefs/food-8.jpg",
     alt: "Food-8",
   },
   {
     image: "/images/mischiefs/food-9.jpg",
-    thumbImage: "/images/mischiefs/food-9.jpg",
     alt: "Food-9",
   },
 ];
