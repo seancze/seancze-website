@@ -9,10 +9,15 @@ import { Navbar } from "@/app/components/Navbar";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState("home");
+  const [isMagicMode, setIsMagicMode] = useState(false);
 
   const scrollToSection = (section) => {
     setCurrentSection(section);
     document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+  };
+
+  const toggleMagicMode = () => {
+    setIsMagicMode(!isMagicMode);
   };
 
   return (
@@ -24,7 +29,12 @@ export default function Home() {
 
       <main className="bg-primary">
         <InitialScreen onArrowClick={() => scrollToSection("about")} />
-        <Navbar currentSection={currentSection} onNavigate={scrollToSection} />
+        <Navbar
+          currentSection={currentSection}
+          onNavigate={scrollToSection}
+          isMagicMode={isMagicMode}
+          onToggleMagicMode={toggleMagicMode}
+        />
         <About />
         <Projects />
       </main>
