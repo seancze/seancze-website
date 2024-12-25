@@ -41,6 +41,37 @@ export const PROJECTS = [
     ],
   },
   {
+    name: "MathFoundry",
+    description:
+      "How Might We use AI to not only generate math questions but also verify that the generated questions are actually solvable?",
+    projectUrl: "https://github.com/ZhiZhangT/eduRAG/tree/main",
+    videoUrl: "",
+    githubUrl: "https://github.com/ZhiZhangT/eduRAG/tree/main",
+    techStack: ["Python", "MongoDB", "OpenAI"],
+    images: [
+      {
+        image: "/images/portfolio/math-foundry/1-title.png",
+        title: "1 Title",
+        alt: "1 Title",
+      },
+      {
+        image: "/images/portfolio/math-foundry/2-retrieval.png",
+        title: "2 Retrieval",
+        alt: "2 Retrieval",
+      },
+      {
+        image: "/images/portfolio/math-foundry/3-generate.png",
+        title: "3 Generate",
+        alt: "3 Generate",
+      },
+      {
+        image: "/images/portfolio/math-foundry/4-verify.png",
+        title: "4 Verify",
+        alt: "4 Verify",
+      },
+    ],
+  },
+  {
     name: "Personal Site",
     description:
       "A snippet of who Sean Chen is and a fun introduction into AngularJS and vanilla CSS",
