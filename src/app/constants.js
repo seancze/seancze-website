@@ -27,7 +27,7 @@ export const PROJECTS = [
   {
     name: "Reddit LLM",
     description:
-      "To help myself and others easily perform data analysis, I built a ChatGPT-like web application enriched with data from the SGExams subreddit",
+      "Can online anonymous communities help us better understand the needs of youths? To help myself and others easily perform data analysis on such communities, I built a ChatGPT wrapper around the SGExams subreddit",
     projectUrl: "https://reddit-llm.vercel.app",
     videoUrl: "",
     githubUrl: "https://github.com/seancze/reddit-llm-frontend",
