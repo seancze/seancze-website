@@ -25,6 +25,22 @@ export const TECH_STACK_IMAGES = {
 
 export const PROJECTS = [
   {
+    name: "Reddit LLM",
+    description:
+      "To help myself and others easily perform data analysis, I built a ChatGPT-like web application enriched with data from the SGExams subreddit",
+    projectUrl: "https://reddit-llm.vercel.app",
+    videoUrl: "",
+    githubUrl: "https://github.com/seancze/reddit-llm-frontend",
+    techStack: ["ReactJS", "TailwindCSS", "Python", "MongoDB", "OpenAI"],
+    images: [
+      {
+        image: "/images/portfolio/reddit-llm/1-home-page.png",
+        title: "1 Home Page",
+        alt: "1 Home Page",
+      },
+    ],
+  },
+  {
     name: "Personal Site",
     description:
       "A snippet of who Sean Chen is and a fun introduction into AngularJS and vanilla CSS",
