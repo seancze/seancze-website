@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import NextImage from "next/image";
 import { useState } from "react";
 import {
   FaGithub,
@@ -50,7 +50,18 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [nextImageIndex, setNextImageIndex] = useState(0);
 
-  const getNewImage = ({ isNext = true }) => {
+  const preloadNewImage = (index) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = project.images[index].image;
+    });
+  };
+
+  const getNewImage = async ({ isNext = true }) => {
     if (isAnimating) return;
     let newImageIndex;
 
@@ -63,6 +74,7 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
       setSlideDirection("slide-right");
     }
 
+    await preloadNewImage(newImageIndex);
     setNextImageIndex(newImageIndex);
     setIsAnimating(true);
 
@@ -103,7 +115,7 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
               : ""
           }`}
         >
-          <Image
+          <NextImage
             src={project.images[currentImageIndex].image}
             alt={project.images[currentImageIndex].alt}
             fill
@@ -122,7 +134,7 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
                 : "animate-slide-in-right"
             }`}
           >
-            <Image
+            <NextImage
               src={project.images[nextImageIndex].image}
               alt={project.images[nextImageIndex].alt}
               fill
@@ -135,14 +147,14 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
         {project.images.length > 1 && (
           <>
             <button
-              onClick={() => getNewImage({ isNext: false })}
+              onClick={async () => await getNewImage({ isNext: false })}
               disabled={isAnimating}
               className="absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FaChevronLeft className="h-4 w-4 text-black" />
             </button>
             <button
-              onClick={() => getNewImage({ isNext: true })}
+              onClick={async () => await getNewImage({ isNext: true })}
               disabled={isAnimating}
               className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
@@ -159,7 +171,7 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
             return TECH_STACK_IMAGES[tech] ? (
               <div key={index} className="relative group">
                 <div className="w-12 h-12 relative">
-                  <Image
+                  <NextImage
                     src={`/${TECH_STACK_IMAGES[tech]}`}
                     alt={tech}
                     fill
