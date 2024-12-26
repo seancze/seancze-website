@@ -50,37 +50,24 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [nextImageIndex, setNextImageIndex] = useState(0);
 
-  const nextImage = () => {
+  const getNewImage = ({ isNext = true }) => {
     if (isAnimating) return;
+    let newImageIndex;
 
-    const next = (currentImageIndex + 1) % project.images.length;
-    setNextImageIndex(next);
+    if (isNext) {
+      newImageIndex = (currentImageIndex + 1) % project.images.length;
+      setSlideDirection("slide-left");
+    } else {
+      newImageIndex =
+        (currentImageIndex - 1 + project.images.length) % project.images.length;
+      setSlideDirection("slide-right");
+    }
+
+    setNextImageIndex(newImageIndex);
     setIsAnimating(true);
-    setSlideDirection("slide-left");
 
     setTimeout(() => {
-      setCurrentImageIndex(next);
-      // delay clearing animation states slightly to prevent image flickering
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsAnimating(false);
-          setSlideDirection("");
-        });
-      });
-    }, 500);
-  };
-
-  const prevImage = () => {
-    if (isAnimating) return;
-
-    const prev =
-      (currentImageIndex - 1 + project.images.length) % project.images.length;
-    setNextImageIndex(prev);
-    setIsAnimating(true);
-    setSlideDirection("slide-right");
-
-    setTimeout(() => {
-      setCurrentImageIndex(prev);
+      setCurrentImageIndex(newImageIndex);
       // delay clearing animation states slightly to prevent image flickering
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -148,14 +135,14 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
         {project.images.length > 1 && (
           <>
             <button
-              onClick={prevImage}
+              onClick={() => getNewImage({ isNext: false })}
               disabled={isAnimating}
               className="absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FaChevronLeft className="h-4 w-4 text-black" />
             </button>
             <button
-              onClick={nextImage}
+              onClick={() => getNewImage({ isNext: true })}
               disabled={isAnimating}
               className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
