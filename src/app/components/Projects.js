@@ -28,7 +28,7 @@ export const Projects = ({ isMagicMode }) => {
         >
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project, index) => (
             <ProjectCard
               key={index}
@@ -93,84 +93,55 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
 
   return (
     <div
-      className={`rounded-xl transition-all duration-300 flex flex-col h-full overflow-hidden
-      ${
-        isMagicMode
-          ? "parchment magic-card"
-          : "bg-white shadow-lg hover:shadow-2xl"
-      }
-      ${isHovered ? "hovered-card" : ""}`}
+      className={`flex h-full flex-col overflow-hidden rounded-xl transition-all duration-300 ease-in-out
+        ${
+          isMagicMode
+            ? "shadow-[2px_3px_10px_black,inset_0_0_60px_#8a4d0f] bg-[#fffef0]"
+            : "bg-white shadow-lg hover:shadow-2xl"
+        }
+        ${isMagicMode && isHovered && "lg:blur-none lg:opacity-100"}
+        ${isMagicMode && !isHovered && "lg:blur-[2px] lg:opacity-50"} 
+      `}
       onMouseEnter={onMouseEnter}
     >
+      {/* Image Container */}
       <div className="relative h-48">
-        <style jsx>{`
-          @keyframes slideOutLeft {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(-100%);
-            }
-          }
-          @keyframes slideOutRight {
-            from {
-              transform: translateX(0);
-            }
-            to {
-              transform: translateX(100%);
-            }
-          }
-          @keyframes slideInLeft {
-            from {
-              transform: translateX(100%);
-            }
-            to {
-              transform: translateX(0);
-            }
-          }
-          @keyframes slideInRight {
-            from {
-              transform: translateX(-100%);
-            }
-            to {
-              transform: translateX(0);
-            }
-          }
-        `}</style>
+        {/* Current Image (Sliding Out) */}
         <div
-          className={`absolute w-full h-full ${
+          className={`absolute h-full w-full ${
             slideDirection === "slide-left"
-              ? "animate-[slideOutLeft_0.5s_ease-in-out]"
+              ? "animate-slide-out-left"
               : slideDirection === "slide-right"
-              ? "animate-[slideOutRight_0.5s_ease-in-out]"
+              ? "animate-slide-out-right"
               : ""
           }`}
         >
           <Image
             src={project.images[currentImageIndex].image}
             alt={project.images[currentImageIndex].alt}
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
             loading="eager"
-            priority={true}
+            priority
           />
         </div>
 
+        {/* Next Image (Sliding In) */}
         {isAnimating && (
           <div
-            className={`absolute w-full h-full ${
+            className={`absolute h-full w-full ${
               slideDirection === "slide-left"
-                ? "animate-[slideInLeft_0.5s_ease-in-out]"
-                : "animate-[slideInRight_0.5s_ease-in-out]"
+                ? "animate-slide-in-left"
+                : "animate-slide-in-right"
             }`}
           >
             <Image
               src={project.images[nextImageIndex].image}
               alt={project.images[nextImageIndex].alt}
-              layout="fill"
-              objectFit="cover"
+              fill
+              className="object-cover"
               loading="eager"
-              priority={true}
+              priority
             />
           </div>
         )}
@@ -179,21 +150,23 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
             <button
               onClick={prevImage}
               disabled={isAnimating}
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FaChevronLeft className="h-4 w-4 text-black" />
             </button>
             <button
               onClick={nextImage}
               disabled={isAnimating}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FaChevronRight className="h-4 w-4 text-black" />
             </button>
           </>
         )}
       </div>
-      <div className="p-6 flex-grow flex flex-col">
+
+      <div className="flex flex-grow flex-col p-6">
+        {/* Tech Stack Icons */}
         <div className="flex flex-wrap gap-4 mb-3">
           {project.techStack.map((tech, index) => {
             return TECH_STACK_IMAGES[tech] ? (

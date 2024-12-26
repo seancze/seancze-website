@@ -10,6 +10,31 @@ module.exports = {
       sans: ["Montserrat", "sans-serif"],
     },
     extend: {
+      // used to show image sliding animation in Projects component
+      keyframes: {
+        "slide-out-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
+        },
+        "slide-out-right": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(100%)" },
+        },
+        "slide-in-left": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "slide-in-right": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        "slide-out-left": "slide-out-left 0.5s ease-in-out",
+        "slide-out-right": "slide-out-right 0.5s ease-in-out",
+        "slide-in-left": "slide-in-left 0.5s ease-in-out",
+        "slide-in-right": "slide-in-right 0.5s ease-in-out",
+      },
       fontFamily: {
         halloween: ["Halloween", "sans-serif"],
       },

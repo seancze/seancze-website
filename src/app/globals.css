@@ -14,19 +14,6 @@
   }
 }
 
-@layer components {
-  .parchment {
-    @apply shadow-[2px_3px_10px_black,inset_0_0_60px_#8a4d0f] bg-[#fffef0];
-  }
-
-  .magic-card {
-    @apply lg:blur-[2px] lg:opacity-50 transition-all duration-300 ease-in-out;
-  }
-
-  .magic-card.hovered-card {
-    @apply lg:blur-none lg:opacity-100;
-  }
-}
 
 /* this allows us to apply the linear gradient background in the hero component using human-readable colour names in pure css*/
 :root {
