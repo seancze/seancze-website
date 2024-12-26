@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MISCHIEFS } from "@/app/constants";
 
@@ -28,9 +28,20 @@ const MischiefsSlider = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState({});
+  const [isManualControl, setIsManualControl] = useState(false);
+  const intervalRef = useRef(null);
 
   const getNewImage = ({ isNext }) => {
     if (isAnimating) return;
+
+    // Set manual control when buttons are clicked
+    setIsManualControl(true);
+
+    // Clear existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
     setIsAnimating(true);
     setTransitionEnabled(true);
     if (isNext) {
@@ -41,17 +52,25 @@ const MischiefsSlider = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isAnimating) {
-        getNewImage({ isNext: true });
-      }
-    }, 3000);
+    // only start automatic sliding if manual control is not enabled
+    if (!isManualControl) {
+      intervalRef.current = setInterval(() => {
+        if (!isAnimating) {
+          getNewImage({ isNext: true });
+        }
+      }, 3000);
+    }
 
-    return () => clearInterval(interval);
-  }, [currentImageIndex, isAnimating]);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [currentImageIndex, isAnimating, isManualControl]);
 
   useEffect(() => {
-    // re-enable transition after resetting without animation
+    // the transition was set to false to prevent incoherent animation when resetting to first/last slide
+    // only after the images are properly set, then we can enable the transition again
     if (!transitionEnabled) {
       requestAnimationFrame(() => {
         setTransitionEnabled(true);
