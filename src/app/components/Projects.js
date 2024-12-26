@@ -48,46 +48,34 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [nextImageIndex, setNextImageIndex] = useState(0);
 
-  const preloadNewImage = (index) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => {
-        resolve();
-      };
-      img.onerror = reject;
-      img.src = project.images[index].image;
-    });
-  };
-
   const getNewImage = async ({ isNext = true }) => {
-    if (isAnimating) return;
-    let newImageIndex;
+    try {
+      setIsLoading(true);
+      if (isAnimating) return;
+      let newImageIndex;
+      let slideDirection;
 
-    if (isNext) {
-      newImageIndex = (currentImageIndex + 1) % project.images.length;
-      setSlideDirection("slide-left");
-    } else {
-      newImageIndex =
-        (currentImageIndex - 1 + project.images.length) % project.images.length;
-      setSlideDirection("slide-right");
+      if (isNext) {
+        newImageIndex = (currentImageIndex + 1) % project.images.length;
+        slideDirection = "slide-left";
+      } else {
+        newImageIndex =
+          (currentImageIndex - 1 + project.images.length) %
+          project.images.length;
+        slideDirection = "slide-right";
+      }
+      // step 1: set index of next image
+      setNextImageIndex(newImageIndex);
+      setSlideDirection(slideDirection);
+    } catch (error) {
+      console.error(error);
+      // only set isLoading to false if there is an error because this is not the end of the image loading process
+      // isLoading is properly set to false after step 4 (see comments below)
+      setIsLoading(false);
     }
-
-    await preloadNewImage(newImageIndex);
-    setNextImageIndex(newImageIndex);
-    setIsAnimating(true);
-
-    setTimeout(() => {
-      setCurrentImageIndex(newImageIndex);
-      // delay clearing animation states slightly to prevent image flickering
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsAnimating(false);
-          setSlideDirection("");
-        });
-      });
-    }, 500);
   };
 
   return (
@@ -108,13 +96,15 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
         {/* Current Image (Sliding Out) */}
         <div
           className={`absolute h-full w-full ${
-            slideDirection === "slide-left"
+            isAnimating &&
+            (slideDirection === "slide-left"
               ? "animate-slide-out-left"
               : slideDirection === "slide-right"
               ? "animate-slide-out-right"
-              : ""
+              : "")
           }`}
         >
+          {/* issue: currentImage is prematurely set to nextImage making it seem as if the image is transitioning back to itself */}
           <NextImage
             src={project.images[currentImageIndex].image}
             alt={project.images[currentImageIndex].alt}
@@ -122,13 +112,20 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
             className="object-cover"
             loading="eager"
             priority
+            onLoadingComplete={() => {
+              // step 4: after current image is updated to next image, stop animation
+              // this step causes the next image to be hidden and the current image to be shown
+              setIsAnimating(false);
+              setSlideDirection("");
+              setIsLoading(false);
+            }}
           />
         </div>
 
         {/* Next Image (Sliding In) */}
-        {isAnimating && (
+        {
           <div
-            className={`absolute h-full w-full ${
+            className={`absolute h-full w-full ${!isAnimating && "hidden"} ${
               slideDirection === "slide-left"
                 ? "animate-slide-in-left"
                 : "animate-slide-in-right"
@@ -141,21 +138,32 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
               className="object-cover"
               loading="eager"
               priority
+              onLoadingComplete={() => {
+                // step 2: once next image has loaded, start animation
+                if (slideDirection !== "") {
+                  setIsAnimating(true);
+                  // wait for animation to complete (animation takes exactly 0.5s) before updating current image
+                  setTimeout(() => {
+                    // step 3: after animation completes, update current image to be next image
+                    setCurrentImageIndex(nextImageIndex);
+                  }, 500);
+                }
+              }}
             />
           </div>
-        )}
+        }
         {project.images.length > 1 && (
           <>
             <button
               onClick={async () => await getNewImage({ isNext: false })}
-              disabled={isAnimating}
+              disabled={isAnimating || isLoading}
               className="absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FaChevronLeft className="h-4 w-4 text-black" />
             </button>
             <button
               onClick={async () => await getNewImage({ isNext: true })}
-              disabled={isAnimating}
+              disabled={isAnimating || isLoading}
               className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <FaChevronRight className="h-4 w-4 text-black" />
