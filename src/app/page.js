@@ -23,7 +23,7 @@ export default function Home() {
 
   const toggleMagicMode = () => {
     setIsMagicMode(!isMagicMode);
-    // this ensures that the overlay is only shown the first time magic mode is toggled
+    // hasShownTypewriter ensures that the overlay is only shown the first time magic mode is enabled
     if (!isMagicMode && !hasShownTypewriter) {
       setShowTypewriter(true);
     }
