@@ -29,24 +29,21 @@ const MischiefsSlider = () => {
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState({});
 
-  const nextImage = () => {
+  const getNewImage = ({ isNext }) => {
     if (isAnimating) return;
     setIsAnimating(true);
     setTransitionEnabled(true);
-    setCurrentImageIndex((prev) => prev + 1);
-  };
-
-  const prevImage = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setTransitionEnabled(true);
-    setCurrentImageIndex((prev) => prev - 1);
+    if (isNext) {
+      setCurrentImageIndex((prev) => prev + 1);
+    } else {
+      setCurrentImageIndex((prev) => prev - 1);
+    }
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAnimating) {
-        nextImage();
+        getNewImage({ isNext: true });
       }
     }, 3000);
 
@@ -140,14 +137,14 @@ const MischiefsSlider = () => {
         </div>
 
         <button
-          onClick={prevImage}
+          onClick={() => getNewImage({ isNext: false })}
           disabled={isAnimating}
           className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-black rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
         >
           <FaChevronLeft className="h-4 w-4" />
         </button>
         <button
-          onClick={nextImage}
+          onClick={() => getNewImage({ isNext: true })}
           disabled={isAnimating}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-black rounded-full p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
         >
