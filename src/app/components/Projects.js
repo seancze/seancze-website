@@ -268,14 +268,16 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
               </div>
             )}
           </div>
-          <a
-            href={project.projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300"
-          >
-            View More →
-          </a>
+          {project.projectUrl && (
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300"
+            >
+              View More →
+            </a>
+          )}
         </div>
       </div>
     </div>
