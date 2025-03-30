@@ -52,7 +52,9 @@ export default function Home() {
         >
           <div className="text-artyclick-amber sm:text-[1.75rem] lg:text-[3rem] sm:whitespace-nowrap">
             <Typewriter
-              onInit={(typewriter) => {
+              onInit={async (typewriter) => {
+                // wait for the fonts to load before starting the typewriter effect
+                await document.fonts.ready;
                 typewriter
                   .typeString("I solemnly swear that I am up to no good...")
                   .callFunction(() => {
