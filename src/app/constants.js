@@ -40,6 +40,7 @@ export const PROJECTS = [
       },
     ],
   },
+
   {
     name: "MathFoundry",
     description:
@@ -68,6 +69,26 @@ export const PROJECTS = [
         image: "/images/portfolio/math-foundry/4-verify.png",
         title: "4 Verify",
         alt: "4 Verify",
+      },
+    ],
+  },
+  {
+    name: "SwiftStart",
+    description: "An automated documentation generator for Github repositories",
+    projectUrl: "",
+    videoUrl: "",
+    githubUrl: "https://github.com/ruironggg/swiftstart-fe",
+    techStack: ["ReactJS", "TailwindCSS", "Python", "MongoDB", "OpenAI"],
+    images: [
+      {
+        image: "/images/portfolio/swiftstart/1-home-page.png",
+        title: "1 Home Page",
+        alt: "1 Home Page",
+      },
+      {
+        image: "/images/portfolio/swiftstart/2-home-page-magnified.png",
+        title: "2 Home Page Magnified",
+        alt: "2 Home Page Magnified",
       },
     ],
   },
