@@ -45,7 +45,7 @@ export const PROJECTS = [
     name: "MathFoundry",
     description:
       "How Might We use AI to not only generate math questions but also verify that the generated questions are actually solvable?",
-    projectUrl: "https://github.com/ZhiZhangT/eduRAG/tree/main",
+    projectUrl: "",
     videoUrl: "",
     githubUrl: "https://github.com/ZhiZhangT/eduRAG/tree/main",
     techStack: ["Python", "MongoDB", "OpenAI"],
