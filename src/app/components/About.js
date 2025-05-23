@@ -3,14 +3,11 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Typewriter from "typewriter-effect";
 import { Skills } from "@/app/components/Skills";
 import { Mischiefs } from "@/app/components/Mischiefs";
+import { QUOTES } from "@/app/constants";
 
 export const About = ({ isMagicMode }) => {
   const typewriterStrings = isMagicMode
-    ? [
-        "It does not do to dwell on dreams and forget to live.",
-        "We must all face the choice between what is right, and what is easy.",
-        "Happiness can be found, even in the darkest of times, if one only remembers to turn on the light.",
-      ]
+    ? QUOTES
     : [
         "Hi, I am...",
         "Define...",
@@ -104,9 +101,7 @@ export const About = ({ isMagicMode }) => {
                   }}
                 />
               </div>
-              {isMagicMode ? (
-                <p className="font-semibold italic">- Albus Dumbledore</p>
-              ) : (
+              {!isMagicMode && (
                 <h3 className="text-2xl font-semibold">Sean Chen</h3>
               )}
               <br />

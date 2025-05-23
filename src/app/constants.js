@@ -331,6 +331,13 @@ export const PROJECTS = [
   },
 ];
 
+export const QUOTES = [
+  "It does not do to dwell on dreams and forget to live. - Albus Dumbledore",
+  "No one ever made a difference by being like everyone else. - P.T. Barnum",
+  "We must all face the choice between what is right, and what is easy. - Albus Dumbledore",
+  "Men suffer more from imagining too little than too much. - P.T. Barnum",
+];
+
 export const MISCHIEFS = [
   {
     image: "/images/mischiefs/sights-1.jpg",
