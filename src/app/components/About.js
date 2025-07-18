@@ -59,7 +59,7 @@ export const About = ({ isMagicMode }) => {
                 />
               </a>
               <a
-                href="https://www.linkedin.com/in/sean-chen-sage"
+                href="https://www.linkedin.com/in/sean-chen-scze"
                 target="_blank"
                 rel="noopener noreferrer"
               >
