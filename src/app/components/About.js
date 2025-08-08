@@ -38,7 +38,7 @@ export const About = ({ isMagicMode }) => {
               />
             ) : (
               <Image
-                src={"/images/profile-picture/formal.jpg"}
+                src={"/images/profile-picture/formal.jpeg"}
                 alt="Sean Chen formal"
                 width={200}
                 height={200}
