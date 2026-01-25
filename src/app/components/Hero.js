@@ -111,18 +111,18 @@ export const Hero = ({ onArrowClick, isMagicMode }) => {
 
       <button
         onClick={onArrowClick}
-        className={`absolute bottom-8 transition-all duration-300 hover:scale-110 group
+        className={`md:absolute md:bottom-8 transition-all duration-300 hover:scale-110 group
           ${isMagicMode ? "text-magic-gold hover:text-magic-amber" : "text-white hover:text-white"}
         `}
         aria-label="Scroll to next section"
       >
         <div className="flex flex-col items-center gap-2">
           <span
-            className={`text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity
+            className={`text-sm font-medium opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity
               ${isMagicMode ? "text-magic-gold-muted" : "text-white"}
             `}
           >
-            Explore
+            Scroll down
           </span>
           <div className="relative">
             {/* Mouse shape */}
