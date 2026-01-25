@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Hero } from "@/app/components/Hero";
 import { About } from "@/app/components/About";
 import { Projects } from "@/app/components/Projects";
@@ -18,10 +18,54 @@ export default function Home() {
   const [isOverlayVisible, setIsOverlayVisible] = useState(true);
   // Easter eggs hook
   const { showLumos } = useEasterEggs(isMagicMode, () => setIsMagicMode(false));
+  // Track if navigation is in progress to avoid scroll updates during smooth scroll
+  const isNavigatingRef = useRef(false);
+
+  // Set up scroll-based section detection
+  useEffect(() => {
+    const handleScroll = () => {
+      // Skip updates during programmatic navigation
+      // without this, when a section header is clicked, all sections that it scrolls past will briefly become active
+      if (isNavigatingRef.current) return;
+
+      const navbarHeight = 64;
+      const aboutSection = document.getElementById("about");
+      const projectsSection = document.getElementById("projects");
+
+      if (!aboutSection || !projectsSection) return;
+
+      const scrollPosition = window.scrollY + navbarHeight;
+      const aboutTop = aboutSection.offsetTop;
+      const projectsTop = projectsSection.offsetTop;
+
+      if (scrollPosition < aboutTop) {
+        setCurrentSection("home");
+      } else if (scrollPosition < projectsTop) {
+        setCurrentSection("about");
+      } else {
+        setCurrentSection("projects");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Run once on mount to set initial state
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToSection = (section) => {
+    // Disable intersection observer updates during navigation
+    isNavigatingRef.current = true;
     setCurrentSection(section);
     document.getElementById(section).scrollIntoView({ behavior: "smooth" });
+
+    // Re-enable intersection observer after smooth scroll completes
+    setTimeout(() => {
+      isNavigatingRef.current = false;
+    }, 800);
   };
 
   const toggleMagicMode = useCallback(() => {
