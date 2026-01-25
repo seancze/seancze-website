@@ -19,15 +19,30 @@ export const Projects = ({ isMagicMode }) => {
 
   return (
     // scroll-mt-24 is used to ensure that the navbar does not cover the top of the Projects section
-    <div id="projects" className="scroll-mt-24 pb-12">
+    <div
+      id="projects"
+      className={`scroll-mt-24 pb-16 ${
+        isMagicMode ? "bg-magic-bg-primary" : "bg-primary"
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <h2
-          className={`text-4xl font-bold mb-12 ${
-            isMagicMode && "text-dark-pastel-purple"
-          }`}
-        >
-          Projects
-        </h2>
+        <div className="mb-12">
+          <h2
+            className={`text-4xl font-bold ${
+              isMagicMode
+                ? "text-magic-gold font-halloween"
+                : "text-text-primary"
+            }`}
+          >
+            Projects
+          </h2>
+          <div
+            className={`mt-2 w-20 h-1 rounded ${
+              isMagicMode ? "bg-magic-gold" : "bg-accent"
+            }`}
+          />
+        </div>
+
         <div className="gap-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map((project, index) => (
             <ProjectCard
@@ -43,6 +58,28 @@ export const Projects = ({ isMagicMode }) => {
     </div>
   );
 };
+
+const PaginationDots = ({ total, current, isMagicMode }) => (
+  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+    {Array.from({ length: total }, (_, i) => (
+      <div
+        key={i}
+        className={`
+          w-2 h-2 rounded-full transition-all duration-300
+          ${
+            i === current
+              ? isMagicMode
+                ? "bg-magic-gold w-4"
+                : "bg-accent w-4"
+              : isMagicMode
+                ? "bg-magic-gold/40"
+                : "bg-white/60"
+          }
+        `}
+      />
+    ))}
+  </div>
+);
 
 const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -80,19 +117,27 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
 
   return (
     <div
-      className={`flex h-full flex-col overflow-hidden rounded-xl transition-all duration-300 ease-in-out
+      className={`
+        flex h-full flex-col overflow-hidden rounded-2xl
+        transition-all duration-300 ease-out
         ${
           isMagicMode
-            ? "shadow-[2px_3px_10px_black,inset_0_0_60px_#8a4d0f] bg-[#fffef0]"
-            : "bg-white shadow-lg hover:shadow-2xl"
+            ? `
+            bg-parchment border-2 border-magic-gold/30
+            shadow-magic-card
+            ${isHovered ? "lg:blur-none lg:opacity-100 lg:scale-[1.02]" : "lg:blur-[1px] lg:opacity-70"}
+          `
+            : `
+            bg-secondary border border-border-light
+            shadow-card-md hover:shadow-card-lg
+            hover:-translate-y-1
+          `
         }
-        ${isMagicMode && isHovered && "lg:blur-none lg:opacity-100"}
-        ${isMagicMode && !isHovered && "lg:blur-[2px] lg:opacity-50"} 
       `}
       onMouseEnter={onMouseEnter}
     >
       {/* Image Container */}
-      <div className="relative h-48">
+      <div className={`relative h-52 ${isMagicMode ? "sepia-[0.3]" : ""}`}>
         {/* Current Image (Sliding Out) */}
         <div
           className={`absolute h-full w-full ${
@@ -100,11 +145,10 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
             (slideDirection === "slide-left"
               ? "animate-slide-out-left"
               : slideDirection === "slide-right"
-              ? "animate-slide-out-right"
-              : "")
+                ? "animate-slide-out-right"
+                : "")
           }`}
         >
-          {/* issue: currentImage is prematurely set to nextImage making it seem as if the image is transitioning back to itself */}
           <NextImage
             src={project.images[currentImageIndex].image}
             alt={project.images[currentImageIndex].alt}
@@ -112,7 +156,7 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
             className="object-cover"
             loading="eager"
             priority
-            onLoadingComplete={() => {
+            onLoad={() => {
               // step 4: after current image is updated to next image, stop animation
               // this step causes the next image to be hidden and the current image to be shown
               setIsAnimating(false);
@@ -123,51 +167,77 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
         </div>
 
         {/* Next Image (Sliding In) */}
-        {
-          <div
-            className={`absolute h-full w-full ${!isAnimating && "hidden"} ${
-              slideDirection === "slide-left"
-                ? "animate-slide-in-left"
-                : "animate-slide-in-right"
-            }`}
-          >
-            <NextImage
-              src={project.images[nextImageIndex].image}
-              alt={project.images[nextImageIndex].alt}
-              fill
-              className="object-cover"
-              loading="eager"
-              priority
-              onLoadingComplete={() => {
-                // step 2: once next image has loaded, start animation
-                if (slideDirection !== "") {
-                  setIsAnimating(true);
-                  // wait for animation to complete (animation takes exactly 0.5s) before updating current image
-                  setTimeout(() => {
-                    // step 3: after animation completes, update current image to be next image
-                    setCurrentImageIndex(nextImageIndex);
-                  }, 500);
-                }
-              }}
-            />
-          </div>
-        }
+        <div
+          className={`absolute h-full w-full ${!isAnimating && "hidden"} ${
+            slideDirection === "slide-left"
+              ? "animate-slide-in-left"
+              : "animate-slide-in-right"
+          }`}
+        >
+          <NextImage
+            src={project.images[nextImageIndex].image}
+            alt={project.images[nextImageIndex].alt}
+            fill
+            className="object-cover"
+            loading="eager"
+            priority
+            onLoad={() => {
+              // step 2: once next image has loaded, start animation
+              if (slideDirection !== "") {
+                setIsAnimating(true);
+                // wait for animation to complete (animation takes exactly 0.5s) before updating current image
+                setTimeout(() => {
+                  // step 3: after animation completes, update current image to be next image
+                  setCurrentImageIndex(nextImageIndex);
+                }, 500);
+              }
+            }}
+          />
+        </div>
+
         {project.images.length > 1 && (
           <>
             <button
               onClick={async () => await getNewImage({ isNext: false })}
               disabled={isAnimating || isLoading}
-              className="absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+              className={`
+                absolute left-3 top-1/2 -translate-y-1/2
+                w-8 h-8 rounded-full
+                flex items-center justify-center
+                transition-all duration-300
+                disabled:cursor-not-allowed disabled:opacity-50
+                ${
+                  isMagicMode
+                    ? "bg-magic-bg-secondary/80 text-magic-gold hover:bg-magic-bg-secondary"
+                    : "bg-secondary/90 text-text-primary hover:bg-secondary shadow-sm"
+                }
+              `}
             >
-              <FaChevronLeft className="h-4 w-4 text-black" />
+              <FaChevronLeft className="h-3 w-3" />
             </button>
             <button
               onClick={async () => await getNewImage({ isNext: true })}
               disabled={isAnimating || isLoading}
-              className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-white/80 p-1.5 shadow-md transition-all duration-300 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+              className={`
+                absolute right-3 top-1/2 -translate-y-1/2
+                w-8 h-8 rounded-full
+                flex items-center justify-center
+                transition-all duration-300
+                disabled:cursor-not-allowed disabled:opacity-50
+                ${
+                  isMagicMode
+                    ? "bg-magic-bg-secondary/80 text-magic-gold hover:bg-magic-bg-secondary"
+                    : "bg-secondary/90 text-text-primary hover:bg-secondary shadow-sm"
+                }
+              `}
             >
-              <FaChevronRight className="h-4 w-4 text-black" />
+              <FaChevronRight className="h-3 w-3" />
             </button>
+            <PaginationDots
+              total={project.images.length}
+              current={currentImageIndex}
+              isMagicMode={isMagicMode}
+            />
           </>
         )}
       </div>
@@ -186,13 +256,33 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
                     className="object-contain"
                   />
                 </div>
-                <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-github-grey text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap mb-2">
+                <span
+                  className={`
+                    absolute bottom-full left-1/2 -translate-x-1/2 mb-2
+                    px-2 py-1 rounded text-xs font-medium whitespace-nowrap
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                    ${
+                      isMagicMode
+                        ? "bg-magic-bg-secondary text-magic-gold"
+                        : "bg-github-grey text-white"
+                    }
+                  `}
+                >
                   {tech}
                 </span>
               </div>
             ) : (
               <div key={index} className="h-12 flex items-center">
-                <span className="bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-sm font-medium flex items-center justify-center h-8">
+                <span
+                  className={`
+                    px-3 py-1 rounded-full text-sm font-medium
+                    ${
+                      isMagicMode
+                        ? "bg-magic-bg-secondary text-magic-gold"
+                        : "bg-blue-100 text-blue-800"
+                    }
+                  `}
+                >
                   {tech}
                 </span>
               </div>
@@ -200,29 +290,41 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
           })}
         </div>
         <h3
-          className={`text-2xl font-semibold mb-3 ${
-            isMagicMode && "text-dark-pastel-purple"
+          className={`text-xl font-bold mb-3 ${
+            isMagicMode
+              ? "text-magic-bg-primary font-halloween"
+              : "text-text-primary"
           }`}
         >
           {project.name}
         </h3>
-        <p className="text-gray-600 mb-4 flex-grow font-sans">
+
+        <p
+          className={`mb-5 flex-grow text-sm leading-relaxed ${
+            isMagicMode ? "text-magic-bg-secondary" : "text-text-secondary"
+          }`}
+        >
           {project.description}
         </p>
-        <div className="flex justify-between items-center mt-auto">
-          <div className="flex space-x-4 font-sans">
+
+        <div className="flex justify-between items-center mt-auto pt-4 border-t border-border-light/50">
+          <div className="flex space-x-4">
             {project.githubUrl && (
               <div className="relative group">
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md hover:bg-github-grey text-github-grey hover:text-white"
+                  className={`
+                    flex items-center justify-center w-10 h-10 rounded-full
+                    transition-all duration-300 bg-white shadow-md hover:bg-github-grey text-github-grey hover:text-white
+                  `}
+                  aria-label="View on GitHub"
                 >
                   <FaGithub className="w-6 h-6" />
                 </a>
                 <div
-                  className="absolute w-auto min-w-max left-1/2 -translate-x-1/2 
+                  className="absolute w-auto min-w-max left-1/2 -translate-x-1/2
                             bottom-[calc(100%+5px)] rounded-md py-2 px-3 bg-github-grey
                             text-xs font-bold text-white shadow-lg
                             transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
@@ -231,10 +333,8 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
                 >
                   GitHub
                   <div
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
-                              rotate-45 w-2 h-2 bg-github-grey
-                              transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
-                              group-hover:bg-github-grey"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
+                              rotate-45 w-2 h-2 bg-github-grey"
                   />
                 </div>
               </div>
@@ -245,12 +345,13 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
                   href={project.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md transition-all duration-300 hover:bg-youtube-red text-youtube-red hover:text-white"
+                  className="flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 bg-white shadow-md hover:bg-youtube-red text-youtube-red hover:text-white"
+                  aria-label="Watch video"
                 >
                   <FaYoutube className="w-6 h-6" />
                 </a>
                 <div
-                  className="absolute w-auto min-w-max left-1/2 -translate-x-1/2 
+                  className="absolute w-auto min-w-max left-1/2 -translate-x-1/2
                             bottom-[calc(100%+5px)] rounded-md py-2 px-3 bg-youtube-red
                             text-xs font-bold text-white shadow-lg
                             transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
@@ -259,10 +360,8 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
                 >
                   YouTube
                   <div
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 
-                              rotate-45 w-2 h-2 bg-youtube-red
-                              transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]
-                              group-hover:bg-youtube-red"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
+                              rotate-45 w-2 h-2 bg-youtube-red"
                   />
                 </div>
               </div>
@@ -273,7 +372,15 @@ const ProjectCard = ({ project, isMagicMode, isHovered, onMouseEnter }) => {
               href={project.projectUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300"
+              className={`
+                px-4 py-2 rounded-full text-sm font-semibold
+                transition-all duration-300
+                ${
+                  isMagicMode
+                    ? "bg-magic-gold text-magic-bg-primary hover:bg-magic-amber"
+                    : "bg-accent text-secondary hover:bg-accent-hover"
+                }
+              `}
             >
               View More →
             </a>

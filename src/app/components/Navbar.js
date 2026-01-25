@@ -1,35 +1,48 @@
+"use client";
+
 import { FaHatWizard } from "react-icons/fa";
 
 const NavButton = ({ label, isActive, isMagicMode, onClick }) => (
   <button
     onClick={onClick}
     className={`
-      px-2 sm:px-8 
-      py-2 sm:py-3 
-      rounded-lg 
-      transition-all duration-300 
-      border 
-      text-base
+      relative
+      px-3 sm:px-6
+      py-2
+      text-sm sm:text-base
+      font-medium
       whitespace-nowrap
-      hover:scale-110 
-      hover:border-[#FFA500] 
-      hover:shadow-[0_0.1rem_1rem_#FFA500] 
-      hover:bg-[#FFA500] 
-      hover:text-white 
-      hover:font-bold
+      transition-all duration-300
       ${
         isActive
           ? isMagicMode
-            ? "font-bold border-2 shadow-md backdrop-blur-sm"
-            : "shadow-md bg-white/80 backdrop-blur-sm border-gray-400"
+            ? "text-magic-gold"
+            : "text-accent"
           : isMagicMode
-          ? "bg-dark-pastel-purple"
-          : "hover:text-white bg-white/80 backdrop-blur-sm border-gray-200"
-      } 
-      ${isMagicMode ? "text-white" : "text-gray-800"}
+            ? "text-parchment/80 hover:text-parchment"
+            : "text-text-secondary hover:text-text-primary"
+      }
     `}
   >
     {label}
+    {/* Animated underline */}
+    <span
+      className={`
+        absolute bottom-0 left-0 w-full h-0.5
+        transform origin-left transition-transform duration-300
+        ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
+        ${isMagicMode ? "bg-magic-gold" : "bg-accent"}
+      `}
+    />
+    {/* Hover underline effect */}
+    <span
+      className={`
+        absolute bottom-0 left-0 w-full h-0.5
+        transform origin-left transition-transform duration-300
+        ${isActive ? "scale-x-0" : "scale-x-0 hover:scale-x-100"}
+        ${isMagicMode ? "bg-magic-gold/50" : "bg-accent/50"}
+      `}
+    />
   </button>
 );
 
@@ -48,22 +61,22 @@ export const Navbar = ({
   return (
     <nav
       className={`
-        sticky top-0 
-        w-full 
-        text-center 
+        sticky top-0
+        w-full
         py-4
-        overflow-hidden 
-        transition-all duration-300 
-        backdrop-blur-sm 
-        translate-y-0 
-        opacity-100 
-        z-40 
-        ${isMagicMode ? "bg-dark-pastel-purple" : "bg-alice-blue"}
+        transition-all duration-300
+        backdrop-blur-md
+        z-40
+        ${
+          isMagicMode
+            ? "bg-magic-bg-primary/90 border-b border-magic-gold/20"
+            : "bg-secondary/80 border-b border-border-light"
+        }
       `}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center gap-2 sm:gap-4">
-          <div className="flex gap-4">
+        <div className="flex justify-between items-center">
+          <div className="flex gap-1 sm:gap-2">
             {navItems.map((item) => (
               <NavButton
                 key={item.id}
@@ -77,43 +90,49 @@ export const Navbar = ({
 
           <button
             onClick={onToggleMagicMode}
-            className="flex items-center gap-2 focus:outline-none group"
+            className={`
+              flex items-center gap-3
+              px-3 py-2
+              rounded-full
+              transition-all duration-300
+              group
+              ${isMagicMode ? "hover:bg-magic-gold/10" : "hover:bg-accent/5"}
+            `}
             aria-label="Toggle magic mode"
           >
-            <div className="flex items-center">
+            <div
+              className={`
+                relative w-12 h-6
+                rounded-full
+                transition-all duration-300
+                ${isMagicMode ? "bg-magic-gold/30" : "bg-border-light"}
+              `}
+            >
               <div
                 className={`
-                  w-10 md:w-12 
-                  h-5 md:h-6 
-                  rounded-full 
-                  p-1 
-                  cursor-pointer 
-                  transition-all duration-300 
-                  ${isMagicMode ? "bg-[#FFA500] bg-opacity-50" : "bg-gray-200"}
+                  absolute top-1
+                  w-4 h-4
+                  rounded-full
+                  shadow-md
+                  transition-all duration-300
+                  ${
+                    isMagicMode
+                      ? "left-7 bg-magic-gold shadow-magic-glow"
+                      : "left-1 bg-white"
+                  }
                 `}
-              >
-                <div
-                  className={`
-                    w-3 md:w-4 
-                    h-3 md:h-4 
-                    rounded-full 
-                    shadow-md 
-                    transform 
-                    transition-transform duration-300
-                    ${
-                      isMagicMode
-                        ? "translate-x-5 md:translate-x-6 bg-[#FFA500]"
-                        : "translate-x-0 bg-white"
-                    }
-                  `}
-                ></div>
-              </div>
+              />
             </div>
+
             <FaHatWizard
               className={`
-                w-5 h-5 md:w-6 md:h-6
+                w-5 h-5
                 transition-all duration-300
-                ${isMagicMode ? "text-[#FFA500]" : "text-gray-600"}
+                ${
+                  isMagicMode
+                    ? "text-magic-gold rotate-12 scale-110"
+                    : "text-text-secondary group-hover:text-accent"
+                }
               `}
             />
           </button>
