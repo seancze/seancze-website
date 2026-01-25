@@ -8,6 +8,7 @@ export const TECH_STACK_IMAGES = {
   TensorFlow: "images/tech-stack/tensorflow.svg",
   OpenCV: "images/tech-stack/opencv.svg",
   OpenAI: "images/tech-stack/openai.svg",
+  PostgreSQL: "images/tech-stack/psql.svg",
   Python: "images/tech-stack/python.svg",
   DeepFace: "images/tech-stack/deepface.webp",
   HuggingFace: "images/tech-stack/hugging-face.webp",

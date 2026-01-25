@@ -7,19 +7,19 @@ import { TECH_STACK_IMAGES } from "@/app/constants";
 const skillCategories = [
   {
     name: "Languages",
-    skills: ["Python", "Javascript", "Java", "Scala", "Swift"],
+    skills: ["Python", "Javascript", "Scala", "Java", "Swift"],
   },
   {
     name: "Frameworks",
-    skills: ["ReactJS", "AngularJS", "NodeJS", "TailwindCSS"],
+    skills: ["ReactJS", "NodeJS", "AngularJS", "TailwindCSS"],
   },
   {
-    name: "Data & AI",
-    skills: ["OpenAI", "MongoDB", "TensorFlow"],
+    name: "Databases",
+    skills: ["PostgreSQL", "MongoDB", "Firebase"],
   },
   {
     name: "Cloud",
-    skills: ["AWS", "Firebase"],
+    skills: ["AWS"],
   },
 ];
 
