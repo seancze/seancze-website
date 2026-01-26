@@ -4,7 +4,7 @@ export const TECH_STACK_IMAGES = {
   ReactJS: "images/tech-stack/reactjs.webp",
   TailwindCSS: "images/tech-stack/tailwindcss.svg",
   MongoDB: "images/tech-stack/mongodb.svg",
-  NodeJS: "images/tech-stack/nodejs.webp",
+  NodeJS: "images/tech-stack/nodejs.svg",
   TensorFlow: "images/tech-stack/tensorflow.svg",
   OpenCV: "images/tech-stack/opencv.svg",
   OpenAI: "images/tech-stack/openai.svg",
