@@ -44,7 +44,7 @@ export const About = ({ isMagicMode }) => {
     // scroll-mt-16 is used to ensure that the navbar does not cover the top of the About section
     <div
       id="about"
-      className={`min-h-screen flex flex-col pt-16 scroll-mt-16 ${
+      className={`flex flex-col pt-16 scroll-mt-16 ${
         isMagicMode ? "bg-magic-bg-primary" : "bg-primary"
       }`}
     >
