@@ -33,7 +33,27 @@ const MischiefsSlider = () => {
   const [imagesLoaded, setImagesLoaded] = useState({});
   const [isManualControl, setIsManualControl] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [slideWidth, setSlideWidth] = useState(0);
   const intervalRef = useRef(null);
+  const slideRef = useRef(null);
+
+  // Calculate slide width including gap
+  useEffect(() => {
+    const updateSlideWidth = () => {
+      if (slideRef.current) {
+        const slide = slideRef.current.querySelector(".slide-item");
+        if (slide) {
+          const styles = window.getComputedStyle(slideRef.current);
+          const gap = parseFloat(styles.gap) || 0;
+          setSlideWidth(slide.offsetWidth + gap);
+        }
+      }
+    };
+
+    updateSlideWidth();
+    window.addEventListener("resize", updateSlideWidth);
+    return () => window.removeEventListener("resize", updateSlideWidth);
+  }, []);
 
   const getNewImage = ({ isNext }) => {
     if (isAnimating) return;
@@ -119,29 +139,32 @@ const MischiefsSlider = () => {
 
   return (
     <div className="w-full">
-      <div className="relative overflow-hidden rounded-xl h-72">
+      <div className="relative overflow-hidden rounded-xl h-48 sm:h-56 md:h-64 lg:h-72">
         <div
-          className={`flex gap-6 ${
+          ref={slideRef}
+          className={`flex gap-3 sm:gap-4 md:gap-6 ${
             transitionEnabled
               ? "transition-transform duration-300 ease-in-out"
               : ""
           }`}
           style={{
-            transform: `translateX(-${currentImageIndex * 26}rem)`,
+            transform: slideWidth
+              ? `translateX(-${currentImageIndex * slideWidth}px)`
+              : "translateX(0)",
           }}
           onTransitionEnd={handleTransitionEnd}
         >
           {slides.map((slide, index) => (
             <div
               key={`${slide.image}-${index}`}
-              className="flex-shrink-0 w-96 group"
+              className="flex-shrink-0 w-[calc(100vw-2rem)] sm:w-80 md:w-96 group slide-item"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(-1)}
             >
               {/* Ornate frame container */}
               <div
                 className={`
-                  relative h-72 p-3
+                  relative h-48 sm:h-56 md:h-64 lg:h-72 p-2 sm:p-3
                   bg-gradient-to-br from-magic-gold via-magic-amber to-magic-gold
                   rounded-lg shadow-magic-glow
                   transition-all duration-300
@@ -176,10 +199,10 @@ const MischiefsSlider = () => {
                   />
                 </div>
                 {/* Decorative corner accents */}
-                <div className="absolute top-1 left-1 w-4 h-4 border-l-2 border-t-2 border-magic-bg-primary/30 rounded-tl" />
-                <div className="absolute top-1 right-1 w-4 h-4 border-r-2 border-t-2 border-magic-bg-primary/30 rounded-tr" />
-                <div className="absolute bottom-1 left-1 w-4 h-4 border-l-2 border-b-2 border-magic-bg-primary/30 rounded-bl" />
-                <div className="absolute bottom-1 right-1 w-4 h-4 border-r-2 border-b-2 border-magic-bg-primary/30 rounded-br" />
+                <div className="absolute top-0.5 left-0.5 sm:top-1 sm:left-1 w-3 h-3 sm:w-4 sm:h-4 border-l-2 border-t-2 border-magic-bg-primary/30 rounded-tl" />
+                <div className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-t-2 border-magic-bg-primary/30 rounded-tr" />
+                <div className="absolute bottom-0.5 left-0.5 sm:bottom-1 sm:left-1 w-3 h-3 sm:w-4 sm:h-4 border-l-2 border-b-2 border-magic-bg-primary/30 rounded-bl" />
+                <div className="absolute bottom-0.5 right-0.5 sm:bottom-1 sm:right-1 w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-b-2 border-magic-bg-primary/30 rounded-br" />
               </div>
             </div>
           ))}
@@ -190,8 +213,8 @@ const MischiefsSlider = () => {
           onClick={() => getNewImage({ isNext: false })}
           disabled={isAnimating}
           className="
-            absolute left-4 top-1/2 -translate-y-1/2
-            w-10 h-10 rounded-full
+            absolute left-2 sm:left-4 top-1/2 -translate-y-1/2
+            w-8 h-8 sm:w-10 sm:h-10 rounded-full
             bg-magic-bg-secondary/90 text-magic-gold
             border border-magic-gold/30
             flex items-center justify-center
@@ -202,14 +225,14 @@ const MischiefsSlider = () => {
             z-10
           "
         >
-          <FaChevronLeft className="h-4 w-4" />
+          <FaChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
         </button>
         <button
           onClick={() => getNewImage({ isNext: true })}
           disabled={isAnimating}
           className="
-            absolute right-4 top-1/2 -translate-y-1/2
-            w-10 h-10 rounded-full
+            absolute right-2 sm:right-4 top-1/2 -translate-y-1/2
+            w-8 h-8 sm:w-10 sm:h-10 rounded-full
             bg-magic-bg-secondary/90 text-magic-gold
             border border-magic-gold/30
             flex items-center justify-center
@@ -220,7 +243,7 @@ const MischiefsSlider = () => {
             z-10
           "
         >
-          <FaChevronRight className="h-4 w-4" />
+          <FaChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
         </button>
       </div>
 
