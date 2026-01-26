@@ -103,7 +103,7 @@ export default function Home() {
           <div className="absolute inset-8 border-2 border-magic-gold/30 rounded-lg pointer-events-none" />
           <div className="absolute inset-12 border border-magic-gold/20 rounded-lg pointer-events-none" />
 
-          <div className="text-magic-gold text-xl sm:text-2xl lg:text-4xl sm:whitespace-nowrap font-halloween">
+          <div className="text-magic-gold text-xl sm:text-2xl lg:text-4xl lg:whitespace-nowrap font-halloween px-16 text-center">
             <Typewriter
               onInit={async (typewriter) => {
                 // wait for the fonts to load before starting the typewriter effect
